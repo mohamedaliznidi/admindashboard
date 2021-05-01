@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { IconsPageComponent } from './components';
-import { ChartsPageComponent, MapPageComponent } from './containers';
+
+import { ChartsPageComponent, MapPageComponent, IconsPageComponent } from './containers';
 
 const routes: Routes = [
   {

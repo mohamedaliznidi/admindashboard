@@ -1,6 +1,6 @@
 <mat-card class="performance-chart">
   <mat-card-title class="performance-chart__header">
-    <h5 class="performance-chart__header-title">App Performance</h5>
+    <h5 class="performance-chart__header-title">Administration</h5>
 
     <app-settings-menu></app-settings-menu>
   </mat-card-title>
@@ -9,27 +9,29 @@
     <div class="performance-chart__content-header">
       <div class="performance-chart__content-header-item">
         <div class="performance-chart__content-header-item-icon_blue"></div>
-        <span class="performance-chart__content-header-item-text">Integration</span>
+        <span class="performance-chart__content-header-item-text">Admins</span>
       </div>
       <div class="performance-chart__content-header-item">
         <div class="performance-chart__content-header-item-icon_yellow"></div>
-        <span class="performance-chart__content-header-item-text">SDK</span>
+        <span class="performance-chart__content-header-item-text"
+          >Managers</span
+        >
       </div>
     </div>
 
     <div class="performance-chart__progress-wrapper">
-      <h6 class="performance-chart__progress-title">Integration</h6>
+      <h6 class="performance-chart__progress-title">Admins</h6>
       <mat-progress-bar
         class="performance-chart__progress-bar"
         mode="determinate"
-        [value]=performanceChartData.integration
+        [value]="performanceChartData.integration"
       ></mat-progress-bar>
-      <h6 class="performance-chart__progress-title">SDK</h6>
+      <h6 class="performance-chart__progress-title">Managers</h6>
       <mat-progress-bar
         class="performance-chart__progress-bar"
         mode="determinate"
         color="accent"
-        [value]=performanceChartData.sdk
+        [value]="performanceChartData.sdk"
       ></mat-progress-bar>
     </div>
   </mat-card-content>

@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -7,12 +14,16 @@ import {
   ApexTooltip,
   ApexMarkers,
   ApexXAxis,
-  ApexPlotOptions
+  ApexPlotOptions,
+  ApexStroke,
+  ApexLegend,
+  ApexGrid,
 } from 'ng-apexcharts';
 
 import { DailyLineChartData, TimeData } from '../../models';
 import { colors } from '../../../../consts';
 import { customTooltip } from '../../consts';
+import * as ApexCharts from 'apexcharts';
 
 type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -33,13 +44,13 @@ type ChartOptions = {
 enum matSelectedFields {
   daily = 'Daily',
   weekly = 'Weekly',
-  monthly = 'Monthly'
+  monthly = 'Monthly',
 }
 
 @Component({
   selector: 'app-daily-line-chart',
   templateUrl: './daily-line-chart.component.html',
-  styleUrls: ['./daily-line-chart.component.scss']
+  styleUrls: ['./daily-line-chart.component.scss'],
 })
 export class DailyLineChartComponent implements OnInit, AfterViewInit {
   @Input() dailyLineChartData: DailyLineChartData;
@@ -51,14 +62,14 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
   public colors: typeof colors = colors;
 
   public ngOnInit(): void {
-    this.initChart(this.dailyLineChartData.monthlyData, this.dailyLineChartData.labels);
+    this.initChart(
+      this.dailyLineChartData.monthlyData,
+      this.dailyLineChartData.labels
+    );
   }
 
   public ngAfterViewInit() {
-    this.chartObj = new ApexCharts(
-      this.chart.nativeElement,
-      this.chartOptions
-    )
+    this.chartObj = new ApexCharts(this.chart.nativeElement, this.chartOptions);
 
     this.chartObj.render();
   }
@@ -66,10 +77,10 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
   public initChart(data: TimeData, labels: string[]): void {
     this.chartOptions = {
       legend: {
-        show: false
+        show: false,
       },
       markers: {
-        size: [0, 0, 5]
+        size: [0, 0, 5],
       },
       series: [
         {
@@ -80,38 +91,38 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
         {
           name: 'Desktop',
           type: 'area',
-          data: data.desktop
+          data: data.desktop,
         },
         {
           name: 'Tablet',
           type: 'line',
-          data: data.tablet
-        }
+          data: data.tablet,
+        },
       ],
       colors: [colors.BLUE, colors.LIGHT_BLUE, colors.YELLOW],
       chart: {
         toolbar: {
-          show: false
+          show: false,
         },
         height: 350,
         width: '100%',
         type: 'line',
-        stacked: true
+        stacked: true,
       },
       stroke: {
         width: [2, 0, 2],
-        curve: ['smooth', 'smooth', 'straight']
+        //curve: ['smooth', 'smooth', 'straight'],
       },
       plotOptions: {
         bar: {
-          columnWidth: '50%'
+          columnWidth: '50%',
         },
       },
       grid: {
         yaxis: {
           lines: {
             show: false,
-          }
+          },
         },
       },
       fill: {
@@ -122,8 +133,8 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
           type: 'vertical',
           opacityFrom: 0.85,
           opacityTo: 0.55,
-          stops: [0, 100, 100, 100]
-        }
+          stops: [0, 100, 100, 100],
+        },
       },
       labels: labels,
       xaxis: {
@@ -149,12 +160,12 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
         },
       },
       tooltip: {
-        custom: ({series, seriesIndex, dataPointIndex, w}) => {
+        custom: ({ series, seriesIndex, dataPointIndex, w }) => {
           return customTooltip;
-        }
-      }
+        },
+      },
     };
-  };
+  }
 
   public changedMatSelectionValue() {
     switch (this.selectedMatSelectValue) {
@@ -176,8 +187,8 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
               name: 'Tablet',
               type: 'line',
               data: this.dailyLineChartData.dailyData.tablet,
-            }
-          ]
+            },
+          ],
         };
         break;
       case matSelectedFields.weekly:
@@ -198,8 +209,8 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
               name: 'Tablet',
               type: 'line',
               data: this.dailyLineChartData.weeklyData.tablet,
-            }
-          ]
+            },
+          ],
         };
         break;
       default:
@@ -220,8 +231,8 @@ export class DailyLineChartComponent implements OnInit, AfterViewInit {
               name: 'Tablet',
               type: 'line',
               data: this.dailyLineChartData.monthlyData.tablet,
-            }
-          ]
+            },
+          ],
         };
     }
 
