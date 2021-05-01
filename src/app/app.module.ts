@@ -12,11 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthModule } from './pages/auth/auth.module';
+import { CategoryTableComponent } from './pages/Product-categories/category-table/category-table.component';
+import { ModelsComponent } from './pages/Product-categories/models/models.component';
+import { CategoryPageComponent } from './pages/Product-categories/category-page/category-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CategoryTableComponent,
+    ModelsComponent,
+    CategoryPageComponent
   ],
   imports: [
     BrowserModule,
