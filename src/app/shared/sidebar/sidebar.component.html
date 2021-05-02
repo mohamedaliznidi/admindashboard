@@ -6,10 +6,7 @@
   <mat-list-item routerLink="{{ routes.TABLES }}" routerLinkActive="active">
     <mat-icon>calendar_today</mat-icon> Calender
   </mat-list-item>
-  <mat-list-item
-    routerLink="{{ routes.NOTIFICATION }}"
-    routerLinkActive="active"
-  >
+  <mat-list-item routerLink="{{ routes.CLAIM }}" routerLinkActive="active">
     <mat-icon>error</mat-icon> Claim
   </mat-list-item>
 
@@ -19,7 +16,15 @@
     <div>
       <mat-list-item
         class="ui-element"
-        routerLink="{{ routes.UI_ELEMENTS_ICONS }}"
+        routerLink="{{ routes.ADMIN }}"
+        routerLinkActive="active"
+      >
+        <div class="circle"></div>
+        Admins
+      </mat-list-item>
+      <mat-list-item
+        class="ui-element"
+        routerLink="{{ routes.CLIENT }}"
         routerLinkActive="active"
       >
         <div class="circle"></div>
@@ -27,7 +32,7 @@
       </mat-list-item>
       <mat-list-item
         class="ui-element"
-        routerLink="{{ routes.UI_ELEMENTS_CHARTS }}"
+        routerLink="{{ routes.DELIVERYMAN }}"
         routerLinkActive="active"
       >
         <div class="circle"></div>
@@ -35,7 +40,7 @@
       </mat-list-item>
       <mat-list-item
         class="ui-element"
-        routerLink="{{ routes.UI_ELEMENTS_MAP }}"
+        routerLink="{{ routes.MANAGER }}"
         routerLinkActive="active"
       >
         <div class="circle"></div>

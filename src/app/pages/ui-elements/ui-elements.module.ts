@@ -59,7 +59,7 @@ import { googleMapKey } from './consts';
     }),
     MatToolbarModule,
     SharedModule,
-    DashboardModule,
+    //DashboardModule,
   ],
   providers: [ChartsService],
 })
