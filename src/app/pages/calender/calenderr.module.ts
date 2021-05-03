@@ -6,9 +6,19 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CalenderComponent } from './components/calender/calender.component';
 import { FormsModule } from '@angular/forms';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import interactionPlugin from '@fullcalendar/interaction';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
+  interactionPlugin,
+]);
 @NgModule({
   declarations: [CalenderPageComponent, CalenderComponent],
   imports: [
@@ -18,10 +28,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     MatToolbarModule,
     CommonModule,
     FormsModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
+    FullCalendarModule,
   ],
 })
 export class CalenderrModule {}
