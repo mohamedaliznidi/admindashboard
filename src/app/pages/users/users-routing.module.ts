@@ -1,29 +1,12 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import {
-  AdminComponent,
-  ClientComponent,
-  DeliverymanComponent,
-  ManagerComponent,
-} from './container';
+import { AdminPageComponent } from './containers';
 
 const routes: Routes = [
   {
     path: 'admin',
-    component: AdminComponent,
-  },
-  {
-    path: 'client',
-    component: ClientComponent,
-  },
-  {
-    path: 'deliveryman',
-    component: DeliverymanComponent,
-  },
-  {
-    path: 'manager',
-    component: ManagerComponent,
+    component: AdminPageComponent,
   },
 ];
 

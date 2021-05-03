@@ -3,38 +3,34 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 
-export interface Employee {
-  name: string;
-  company: string;
-  city: string;
-  state: string;
-}
+import { Users } from '../../models';
 
 @Component({
   selector: 'app-user-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  templateUrl: './user-table.component.html',
+  styleUrls: ['./user-table.component.scss'],
 })
-export class TableComponent implements OnInit {
-  @Input() employeeTableData: Employee[];
+export class UserTableComponent implements OnInit {
+  @Input() userTableData: Users[];
   public displayedColumns: string[] = [
-    'select',
-    'name',
-    'company',
-    'city',
-    'state',
+    'id',
+    'email',
+    'username',
+    'role',
+    
   ];
-  public dataSource: MatTableDataSource<Employee>;
-  public selection = new SelectionModel<Employee>(true, []);
+  public dataSource: MatTableDataSource<Users>;
+  public selection = new SelectionModel<Users>(true, []);
 
   public isShowFilterInput = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   public ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Employee>(this.employeeTableData);
+    this.dataSource = new MatTableDataSource<Users>(this.userTableData);
 
     this.dataSource.paginator = this.paginator;
+    console.log(this.dataSource);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -68,6 +64,6 @@ export class TableComponent implements OnInit {
 
   public showFilterInput(): void {
     this.isShowFilterInput = !this.isShowFilterInput;
-    this.dataSource = new MatTableDataSource<Employee>(this.employeeTableData);
+    this.dataSource = new MatTableDataSource<Users>(this.userTableData);
   }
 }
