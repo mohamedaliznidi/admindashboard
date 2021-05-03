@@ -13,28 +13,26 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 import { SharedModule } from '../../shared/shared.module';
-import { CategoryPageComponent } from './category-page/category-page.component';
-import { CategoryTableComponent } from './category-table/category-table.component';
-import { CategoryRoutingModule } from './category-routing.module';
-import { CategoryService } from './services/category.service';
-import { ModelsComponent } from './models/models.component';
 import { EmployeeTableComponent } from '../tables/components';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { AddProductPageComponent } from './add-product-page/add-product-page.component';
+import { AddProductComponentComponent } from './add-product-component/add-product-component.component';
+import { ProductService } from './services/product.service';
+import { ProductRoutingModule } from './product-routing.module';
 
 @NgModule({
   declarations: [
-   CategoryPageComponent,
-   CategoryTableComponent
-
+AddProductPageComponent,
+AddProductComponentComponent
  
 
   ],
   imports: [
     CommonModule,
-    CategoryRoutingModule,
+    ProductRoutingModule,
     MatCardModule,
     MatIconModule,
     MatMenuModule,
@@ -54,7 +52,7 @@ import { FormsModule } from '@angular/forms';
    
   ],
   providers: [
-    CategoryService
+    ProductService,
   ]
 })
-export class CategoryModule { }
+export class ProductModule { }

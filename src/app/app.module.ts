@@ -15,14 +15,15 @@ import { AuthModule } from './pages/auth/auth.module';
 import { CategoryTableComponent } from './pages/Product-categories/category-table/category-table.component';
 import { ModelsComponent } from './pages/Product-categories/models/models.component';
 import { CategoryPageComponent } from './pages/Product-categories/category-page/category-page.component';
+import { AddProductPageComponent } from './pages/add-product/add-product-page/add-product-page.component';
+import { AddProductComponentComponent } from './pages/add-product/add-product-component/add-product-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    CategoryTableComponent,
-    ModelsComponent,
-    CategoryPageComponent
+
+    
   ],
   imports: [
     BrowserModule,

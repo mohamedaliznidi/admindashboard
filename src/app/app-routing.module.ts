@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {AuthGuard} from './pages/auth/guards';
+import { CategoryPageComponent } from './pages/Product-categories/category-page/category-page.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,21 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/typography/typography.module').then(m => m.TypographyModule)
+  },
+
+
+  {
+    path: 'category',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/Product-categories/category.module').then(m => m.CategoryModule)
+  },
+
+  {
+    path: 'addproduct',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/add-product/product.module').then(m => m.ProductModule)
   },
   {
     path: 'tables',

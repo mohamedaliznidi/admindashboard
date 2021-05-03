@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Customer, Employee } from '../../tables/models';
+import { Category } from '../models/Category';
+import { CategoryService } from '../services';
+
 
 @Component({
   selector: 'app-category-page',
@@ -7,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryPageComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
   }
 
+  public employeeTableData$: Observable<Category[]>
+
+  constructor(private service: CategoryService) {
+
+    this.employeeTableData$ = service.loadCategoryTableData();
+  }
 }
