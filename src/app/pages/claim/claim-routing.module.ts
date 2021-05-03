@@ -1,16 +1,18 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import { ClaimPageComponent } from "./container";
+import { ClaimPageComponent } from "./containers";
 
-const routes: Routes =[
+const routes: Routes = [
   {
     path: '',
-    component: ClaimPageComponent,
-  },
-]
+    component: ClaimPageComponent
+  }
+];
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [RouterModule]
 })
 export class ClaimRoutingModule { }

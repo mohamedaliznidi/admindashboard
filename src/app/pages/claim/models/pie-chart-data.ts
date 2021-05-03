@@ -1,6 +1,4 @@
 export interface PieChartData {
-  groupA: number;
-  groupB: number;
-  groupC: number;
-  groupD: number;
+  series: number[],
+  labels: string[]
 }

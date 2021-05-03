@@ -2,6 +2,22 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { ProjectStatData, ProjectTimeData } from '../../models';
 import { colors } from '../../../../consts';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexDataLabels,
+  ApexFill,
+  ApexGrid,
+  ApexLegend,
+  ApexMarkers,
+  ApexNonAxisChartSeries,
+  ApexPlotOptions,
+  ApexResponsive,
+  ApexStroke,
+  ApexTooltip,
+  ApexXAxis,
+  ApexYAxis,
+} from 'ng-apexcharts';
 
 type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -20,13 +36,13 @@ type ChartOptions = {
 enum ProjectsType {
   lightBlue = 'lightBlue',
   SingApp = 'SingApp',
-  RNS = 'RNS'
+  RNS = 'RNS',
 }
 
 @Component({
   selector: 'app-project-stat-chart',
   templateUrl: './project-stat-chart.component.html',
-  styleUrls: ['./project-stat-chart.component.scss']
+  styleUrls: ['./project-stat-chart.component.scss'],
 })
 export class ProjectStatChartComponent implements OnInit {
   @Input() projectsStatsData: ProjectStatData;
@@ -52,61 +68,53 @@ export class ProjectStatChartComponent implements OnInit {
         height: 100,
         width: 130,
         toolbar: {
-          show: false
-        }
+          show: false,
+        },
       },
       legend: {
-        show: false
+        show: false,
       },
       grid: {
-        show: false
+        show: false,
       },
       plotOptions: {
         bar: {
           horizontal: false,
           columnWidth: '70%',
           endingShape: 'rounded',
-          startingShape: 'rounded'
-        }
+          startingShape: 'rounded',
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
         show: true,
         width: 2,
-        colors: ['transparent']
+        colors: ['transparent'],
       },
       xaxis: {
-        categories: [
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug'
-        ],
+        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
         labels: {
-          show: false
+          show: false,
         },
         axisTicks: {
-          show: false
+          show: false,
         },
         axisBorder: {
-          show: false
-        }
+          show: false,
+        },
       },
       yaxis: {
-        show: false
+        show: false,
       },
       tooltip: {
         y: {
           formatter(val) {
             return '$ ' + val + ' thousands';
-          }
-        }
-      }
+          },
+        },
+      },
     };
   }
 
@@ -123,7 +131,7 @@ export class ProjectStatChartComponent implements OnInit {
           default:
             this.selectedStatsLightBlueData = this.projectsStatsData.lightBlue.daily;
         }
-      break;
+        break;
       case this.projectsType.SingApp:
         switch (dateType) {
           case 'Weekly':
@@ -135,7 +143,7 @@ export class ProjectStatChartComponent implements OnInit {
           default:
             this.selectedStatsSingAppData = this.projectsStatsData.singApp.daily;
         }
-      break;
+        break;
       case this.projectsType.RNS:
         switch (dateType) {
           case 'Weekly':
@@ -147,7 +155,7 @@ export class ProjectStatChartComponent implements OnInit {
           default:
             this.selectedStatsRNSData = this.projectsStatsData.rns.daily;
         }
-      break;
+        break;
     }
   }
 }
