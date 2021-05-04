@@ -16,19 +16,36 @@
 
 
   <mat-list-item (click)="openUiElements()">
-    <mat-icon>filter_none</mat-icon> Products
+    <mat-icon>filter_none</mat-icon> Product
   </mat-list-item>
     <div>
       <mat-list-item class="ui-element" routerLink="{{routes.ADDPRODUCT}}" routerLinkActive="active">
         <div class="circle"></div>Add Product
       </mat-list-item>
-      <!--<mat-list-item class="ui-element" routerLink="{{routes.UI_ELEMENTS_CHARTS}}" routerLinkActive="active">
-        <div class="circle"></div>Product Table
-      </mat-list-item>-->
+      <mat-list-item class="ui-element" routerLink="{{routes.PRODUCTS}}" routerLinkActive="active">
+        <div class="circle"></div>Products
 
-
+      </mat-list-item>
     </div>
+
+
+    <mat-list-item (click)="openUiElements()">
+      <mat-icon>filter_none</mat-icon> Publicity
+    </mat-list-item>
+      <div>
+        <mat-list-item class="ui-element" routerLink="{{routes.ADDPUBLICITY}}" routerLinkActive="active">
+          <div class="circle"></div>Add Publicity
+        </mat-list-item>
+        <mat-list-item class="ui-element" routerLink="{{routes.PUBLICITIES}}" routerLinkActive="active">
+          <div class="circle"></div>Publicities
+  
+        </mat-list-item>
+      </div>
+ 
+
 </mat-list>
+
+
 
 <!--
   <mat-list>

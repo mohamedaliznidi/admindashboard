@@ -11,7 +11,7 @@ export class Product {
     price?:number;
     quantity?:number;
     image?:string;
-    expdate?:Date;
+    expdate?:string;
     generalrate?:number;
     nature?:string;
     matiere?:number;
@@ -29,7 +29,7 @@ export class Product {
         price?: number, 
         quantity?: number, 
         image?: string, 
-        expdate?: Date, 
+        expdate?: string, 
         generalrate?: number, 
         nature?: string, 
         matiere?: number, 
@@ -37,38 +37,38 @@ export class Product {
         matiere_grasse?: number, 
         acide_gras_sature?: number, 
         sucres?: number, 
-        fibles?: number, 
+        fibres?: number, 
         proteines?: number, 
         sel?: number, 
         fruits?: number,
         description?:string
     ) {
-        this.id = id
+        this.id = 0
         this.name = name
-        this.categoryname = categoryname
-        this.promotion = promotion
+        this.categoryname = ""
+        this.promotion = 0
         this.code = code
-        this.initial_price = initial_price
+        this.initial_price = 0
         this.price = price
         this.quantity = quantity
         this.image = image
         this.expdate = expdate
-        this.generalrate = generalrate
+        this.generalrate = 0
         this.nature = nature
         this.matiere = matiere
-        this.energie = energie
-        this.matiere_grasse = matiere_grasse
-        this.acide_gras_sature = acide_gras_sature
-        this.sucres = sucres
-        this.fibles = fibles
-        this.proteines = proteines
-        this.sel = sel
-        this.fruits = fruits
+        this.energie = 1
+        this.matiere_grasse = 1
+        this.acide_gras_sature = 1
+        this.sucres = 1
+        this.fibres = 1
+        this.proteines = 1
+        this.sel = 1
+        this.fruits = 1
         this.description=description
       }
     acide_gras_sature?:number;
     sucres?:number;
-    fibles?:number;
+    fibres?:number;
     proteines?:number;
     sel?:number;
     fruits?:number; 

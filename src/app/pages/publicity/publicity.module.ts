@@ -9,39 +9,29 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-
-
 import { SharedModule } from '../../shared/shared.module';
-import { EmployeeTableComponent } from '../tables/components';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddProductPageComponent } from './add-product-page/add-product-page.component';
-import { AddProductComponentComponent } from './add-product-component/add-product-component.component';
-import { ProductService } from './services/product.service';
-import { ProductRoutingModule } from './product-routing.module';
-import { CategoryModule } from '../Product-categories/category.module';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-
-import { ProductsPageComponent } from './products-page/products-page.component';
-import { ProductsComponent } from './products/products.component';
+import { FormsModule } from '@angular/forms';
+import { PublicitiesComponent } from './publicities/publicities/publicities.component';
+import { PublicitiesPageComponent } from './publicities/publicities-page/publicities-page.component';
+import { AddPublicityComponent } from './add-publicity/add-publicity/add-publicity.component';
+import { AddPublicityPageComponent } from './add-publicity/add-publicity-page/add-publicity-page.component';
+import { PublicityService } from './service/publicity.service';
+import { PublicityRoutingModule } from './publicity-routing.module';
 
 @NgModule({
   declarations: [
-AddProductPageComponent,
-AddProductComponentComponent,
-ProductsPageComponent,
-ProductsComponent
+PublicitiesComponent,
+PublicitiesPageComponent,
+AddPublicityComponent,
+AddPublicityPageComponent
  
 
   ],
   imports: [
     CommonModule,
-    ProductRoutingModule,
     MatCardModule,
     MatIconModule,
     MatMenuModule,
@@ -56,18 +46,13 @@ ProductsComponent
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    CategoryModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  
+    PublicityRoutingModule
     
     
    
   ],
   providers: [
-    ProductService
+    PublicityService
   ]
 })
-export class ProductModule { }
+export class PublicityModule { }

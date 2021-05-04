@@ -78,16 +78,15 @@
 </form>
 <p><br><br>
 
-<!--
 <mat-form-field>
   <mat-label>Search For Category</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Write category Name" #input>
 
-</mat-form-field>-->
+</mat-form-field>
 
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="categories" matSort>
+  <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">

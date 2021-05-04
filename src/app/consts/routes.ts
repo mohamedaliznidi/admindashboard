@@ -8,5 +8,8 @@ export enum routes {
   UI_ELEMENTS_MAP = '/ui/map',
   LOGIN = '/login',
   CATEGORY = '/category',
-  ADDPRODUCT ='/addproduct'
+  ADDPRODUCT ='/product/addproduct',
+  PRODUCTS='/product/products',
+  ADDPUBLICITY='/publicity/addpublicity',
+  PUBLICITIES='/publicity/publicities'
 }

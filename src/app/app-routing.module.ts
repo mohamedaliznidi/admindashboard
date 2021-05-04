@@ -27,12 +27,21 @@ const routes: Routes = [
     loadChildren: () => import('./pages/Product-categories/category.module').then(m => m.CategoryModule)
   },
 
+
   {
-    path: 'addproduct',
-    pathMatch: 'full',
+    path: 'product',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/add-product/product.module').then(m => m.ProductModule)
   },
+
+ {
+    path: 'publicity',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/publicity/publicity.module').then(m => m.PublicityModule)
+  },
+
+
+
   {
     path: 'tables',
     pathMatch: 'full',

@@ -16,8 +16,8 @@ import { CategoryService } from '../services';
 export class CategoryTableComponent implements OnInit { @Input() employeeTableData: Category[];
   public displayedColumns: string[] = ['id', 'name','action'];
   
-  /*public dataSource: MatTableDataSource<Category>;
-  public selection = new SelectionModel<Category>(true, []);
+  public dataSource: MatTableDataSource<Category>;
+ /* public selection = new SelectionModel<Category>(true, []);
 
   public isShowFilterInput = false;
 
@@ -53,16 +53,9 @@ export class CategoryTableComponent implements OnInit { @Input() employeeTableDa
   }
  
 */
-/*  public applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-/** 
-  public showFilterInput(): void {
-    this.isShowFilterInput = !this.isShowFilterInput;
-    this.dataSource = new MatTableDataSource<Category>(this.employeeTableData);
-  }
-  */
+
+
+
 
 /*
 dataSource: MatTableDataSource<UserData>;
@@ -114,6 +107,7 @@ public getcategories(): void {
 
       (response: Category[])=> {
          this.categories=response;
+         this.dataSource = new MatTableDataSource(this.categories);
         
       },
       (error: HttpErrorResponse)=> {
@@ -121,10 +115,16 @@ public getcategories(): void {
       }
     );
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
 
 
   onSubmit(data){
-    this.http.post('http://localhost:8080/productcategory/addproductcategory',data).subscribe(result=>{this.getcategories();
+    console.log(data);
+    this.http.post('http://localhost:8080/productcategory/addproductcategory',data).subscribe(result=>{console.log(data);
   });
   }
 
