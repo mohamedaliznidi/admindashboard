@@ -2,7 +2,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { AuthGuard } from './pages/auth/guards';
+import { AdminGuard, AuthGuard, ManagerGuard } from './pages/auth/guards';
 
 const routes: Routes = [
   {
@@ -33,13 +33,13 @@ const routes: Routes = [
 
   {
     path: 'users',
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     loadChildren: () =>
       import('./pages/users/users.module').then((m) => m.UsersModule),
   },
   {
     path: 'claim',
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     loadChildren: () =>
       import('./pages/claim/claim.module').then((m) => m.ClaimModule),
   },
@@ -61,7 +61,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
+      // useHash: true,
       preloadingStrategy: PreloadAllModules,
     }),
   ],

@@ -10,8 +10,9 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { YearPipe } from './pipes';
 import { AuthService, EmailService } from './services';
 import { LoginFormComponent, SignFormComponent } from './components';
-import { AuthGuard } from './guards';
+import { AdminGuard, AuthGuard, ManagerGuard } from './guards';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
   providers: [
     AuthService,
     EmailService,
-    AuthGuard
+    AuthGuard,
+    AdminGuard,
+    ManagerGuard
   ]
 })
 export class AuthModule { }

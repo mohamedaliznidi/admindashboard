@@ -4737,6 +4737,11 @@
     "json-schema" "0.2.3"
     "verror" "1.10.0"
 
+"jwt-decode@^3.1.2":
+  "integrity" "sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A=="
+  "resolved" "https://registry.npmjs.org/jwt-decode/-/jwt-decode-3.1.2.tgz"
+  "version" "3.1.2"
+
 "karma-source-map-support@1.4.0":
   "integrity" "sha512-RsBECncGO17KAoJCYXjv+ckIz+Ii9NCi+9enk+rq6XC81ezYkb4/RHE6CTXdA7IOJqoF3wcaLfVG0CPmE5ca6A=="
   "resolved" "https://registry.npmjs.org/karma-source-map-support/-/karma-source-map-support-1.4.0.tgz"

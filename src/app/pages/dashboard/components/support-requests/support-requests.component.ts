@@ -5,9 +5,16 @@ import { SupportRequestData } from '../../models/support-request-data';
 @Component({
   selector: 'app-support-requests',
   templateUrl: './support-requests.component.html',
-  styleUrls: ['./support-requests.component.scss']
+  styleUrls: ['./support-requests.component.scss'],
 })
 export class SupportRequestsComponent {
   @Input() supportRequestData: SupportRequestData[];
-  public displayedColumns: string[] = ['name', 'email', 'product', 'price', 'date', 'city', 'status'];
+  public displayedColumns: string[] = [
+    'name',
+    'email',
+    'price',
+    'date',
+    'city',
+    'status',
+  ];
 }

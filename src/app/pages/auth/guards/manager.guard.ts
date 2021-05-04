@@ -7,10 +7,12 @@ import {
 import { Injectable } from '@angular/core';
 
 import { routes } from '../../../consts';
+
 import jwt_decode from 'jwt-decode';
 import { DToken } from '../models/d-token';
+
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class ManagerGuard implements CanActivate {
   public routers: typeof routes = routes;
 
   constructor(private router: Router) {}
@@ -21,8 +23,8 @@ export class AuthGuard implements CanActivate {
   ): boolean {
     const token = localStorage.getItem('token');
     const decoded: DToken = jwt_decode(token);
-    if (token) {
-      console.log(decoded.authorities[0]);
+
+    if (decoded.authorities[0] == 'MANAGER') {
       return true;
     } else {
       this.router.navigate([this.routers.LOGIN]);

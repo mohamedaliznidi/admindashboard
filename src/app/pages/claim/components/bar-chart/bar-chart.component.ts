@@ -63,7 +63,7 @@ export class BarChartComponent implements OnInit {
           show: false,
         },
       },
-      colors: [colors.BLUE, colors.YELLOW, colors.PINK],
+      colors: [colors.YELLOW],
       dataLabels: {
         enabled: false,
       },
