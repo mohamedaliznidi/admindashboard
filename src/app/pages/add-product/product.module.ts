@@ -28,14 +28,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { ProductsPageComponent } from './products-page/products-page.component';
-import { ProductsComponent } from './products/products.component';
+import { DialogFromMenuExampleDialog, ProductsComponent } from './products/products.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
 AddProductPageComponent,
 AddProductComponentComponent,
 ProductsPageComponent,
-ProductsComponent
+ProductsComponent,
+DialogFromMenuExampleDialog
  
 
   ],
@@ -60,7 +62,8 @@ ProductsComponent
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   
     
     

@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+:host {
+  display: flex;
+  flex-direction: column;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url("https://icon-library.com/images/icon-product/icon-product-5.jpg");
+  background-size: cover;
+}
