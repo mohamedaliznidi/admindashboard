@@ -2,17 +2,24 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { User } from '../models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  public login(): void {
-    localStorage.setItem('token', 'token');
+  
+  
+  constructor(private http: HttpClient) {}
+  public login(data): Observable<any> {
+    console.log(data);
+    return this.http.post('http://localhost:8080/signin', data);
   }
 
-  public sign(): void {
-    localStorage.setItem('token', 'token');
+ 
+
+  public createAdmin(data): Observable<any> {
+    return this.http.post('http://localhost:8080/api/admins', data);
   }
 
   public signOut(): void {
@@ -21,8 +28,8 @@ export class AuthService {
 
   public getUser(): Observable<User> {
     return of({
-      name: 'John',
-      lastName: 'Smith'
+      name: 'yoooo',
+      lastName: 'last',
     });
   }
 }

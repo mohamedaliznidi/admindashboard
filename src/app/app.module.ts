@@ -31,6 +31,7 @@ import { AuthModule } from './pages/auth/auth.module';
     ToastrModule.forRoot(),
     MatCardModule,
     MatButtonModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

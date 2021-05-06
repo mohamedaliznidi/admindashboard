@@ -1,6 +1,6 @@
-@import 'src/app/styles/colors';
-@import 'src/app/styles/font';
-@import 'src/app/styles/variables';
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+@import "src/app/styles/variables";
 
 .user-button {
   background-color: $blue;
@@ -19,8 +19,12 @@
     margin-top: 0;
   }
 }
+.mat-menu-content {
+  margin: 20px;
+}
 
 .user-menu-title {
+  width: 200px;
   padding: 16px 48px 0 16px;
   margin-bottom: 4px;
 
@@ -42,19 +46,24 @@
 .user-menu-icon {
   color: $light-grey;
   margin-right: 16px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .sign-button-wrapper {
   text-align: center;
   padding: 8px 0 16px 0;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-around;
 }
 
 .sign-button {
   border: 1px solid;
   color: $blue;
-  width: 80%;
+  width: 40%;
+  margin-top: 5px;
 }
 
 .user-menu {
@@ -66,7 +75,7 @@
       background-color: $blue-white;
 
       & .user-menu-icon {
-        color: #536DFE;
+        color: #536dfe;
       }
     }
   }
