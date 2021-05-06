@@ -12,7 +12,7 @@ import { AuthService, EmailService } from './services';
 import { LoginFormComponent, SignFormComponent } from './components';
 import { AdminGuard, AuthGuard, ManagerGuard } from './guards';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     YearPipe,
     LoginFormComponent,
     SignFormComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     CommonModule,
@@ -29,14 +29,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [
-    AuthService,
-    EmailService,
-    AuthGuard,
-    AdminGuard,
-    ManagerGuard
-  ]
+  providers: [AuthService, EmailService, AuthGuard, AdminGuard, ManagerGuard],
 })
-export class AuthModule { }
+export class AuthModule {}

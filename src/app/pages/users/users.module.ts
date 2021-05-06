@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { AdminPageComponent } from './containers';
 import { UsersRoutingModule } from './users-routing.module';
@@ -16,6 +17,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { UserTableComponent } from './components';
 import { UsersService } from './services';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminService } from './services/admin.service';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [AdminPageComponent, UserTableComponent],
@@ -33,7 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatFormFieldModule,
     SharedModule,
+    MatInputModule,
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatSortModule
   ],
-  providers: [UsersService],
+  providers: [UsersService, AdminService],
 })
 export class UsersModule {}
