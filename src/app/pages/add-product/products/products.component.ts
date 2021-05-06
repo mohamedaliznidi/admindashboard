@@ -103,11 +103,27 @@ public getproducts(): void {
   styleUrls: ['./products.component.scss'],
 })
 export class DialogFromMenuExampleDialog {
-  constructor(
+  public promotion : number;
+  constructor(private productservice :ProductService,
     public dialogRef: MatDialogRef<DialogFromMenuExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  deleteproduct(id){
+    this.productservice.deleteProduct(id).subscribe(result=>{this.productservice.loadProductTableData();
+    });
+  }
+
+  removepromotion(id){
+    this.productservice.removePromotion(id).subscribe(result=>{this.productservice.loadProductTableData();
+    });  }
+  
+  
+  addpromotion(id){
+    this.productservice.addPromotion(id,this.promotion).subscribe(result=>{this.productservice.loadProductTableData();
+    });  }
+  
 }

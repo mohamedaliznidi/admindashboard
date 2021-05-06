@@ -1,4 +1,4 @@
-<mat-dialog-content>
+<mat-dialog-content  >
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
@@ -13,12 +13,29 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Delete</button>
+      <div class="buttons">
+      <button mat-button (click)="deleteproduct(data.id)">Delete</button>
       <button mat-button>Update</button>
+      <button mat-button (click)="removepromotion(data.id)">Sale Cancel</button>
+    </div>
+      <br><br>
+      <div>
+        
+    <form class="example-form">
+<mat-form-field id="percentage">
+  <mat-label>Write a percentage</mat-label>
+        <input type="text" matInput [(ngModel)]="promotion" >
+      </mat-form-field>
+        <button mat-button (click)="addpromotion(data.id)">Add Sale</button>
+    </form>
+
+
+      </div>
+      
     </mat-card-actions>
   </mat-card>
   </mat-dialog-content>
   
   <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
+    <!--<button mat-button mat-dialog-close>Close</button>-->
   </mat-dialog-actions>

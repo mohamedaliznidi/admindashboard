@@ -14,4 +14,21 @@ export class ProductService {
       return this.http.get<Product[]>(`http://localhost:8080/product/products`)
 
   }
+
+  deleteProduct(id){
+    const deleteEndpoint ='http://localhost:8080/product/deleteproduct/'+ id;
+    return this.http.delete(deleteEndpoint)
+  }
+
+  removePromotion(id){
+    const promotionendpoint ='http://localhost:8080/product/annulerpromotion/'+ id ;
+    return this.http.get(promotionendpoint)
+  }
+
+  addPromotion(id,p){
+    const promotionendpoint ='http://localhost:8080/product/promotion/'+ id +'/'+p ;
+    return this.http.get(promotionendpoint)
+    
+  }
+  
 }
