@@ -2,7 +2,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { AuthGuard } from './pages/auth/guards';
+import { AdminGuard, AuthGuard, ManagerGuard } from './pages/auth/guards';
 
 const routes: Routes = [
   {
@@ -11,22 +11,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: DashboardPageComponent,
   },
-  {
-    path: 'typography',
-    pathMatch: 'full',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./pages/typography/typography.module').then(
-        (m) => m.TypographyModule
-      ),
-  },
-  {
-    path: 'tables',
-    pathMatch: 'full',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./pages/tables/tables.module').then((m) => m.TablesModule),
-  },
+
   {
     path: 'notification',
     pathMatch: 'full',
@@ -37,22 +22,24 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'ui',
+    path: 'calender',
+    pathMatch: 'full',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('./pages/ui-elements/ui-elements.module').then(
-        (m) => m.UiElementsModule
+      import('./pages/calender/calenderr.module').then(
+        (m) => m.CalenderrModule
       ),
   },
+
   {
     path: 'users',
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     loadChildren: () =>
       import('./pages/users/users.module').then((m) => m.UsersModule),
   },
   {
     path: 'claim',
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     loadChildren: () =>
       import('./pages/claim/claim.module').then((m) => m.ClaimModule),
   },

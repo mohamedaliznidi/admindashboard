@@ -1,31 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './container/admin/admin.component';
-import { ManagerComponent } from './container/manager/manager.component';
-import { ClientComponent } from './container/client/client.component';
-import { DeliverymanComponent } from './container/deliveryman/deliveryman.component';
-import { UsersRoutingModule } from './users-routing.module';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { TableComponent } from './components/table/table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+
+import { AdminPageComponent } from './containers';
+import { UsersRoutingModule } from './users-routing.module';
+import { SharedModule } from '../../shared/shared.module';
+import { UserTableComponent } from './components';
+import { UsersService } from './services';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminService } from './services/admin.service';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [
-    AdminComponent,
-    ManagerComponent,
-    ClientComponent,
-    DeliverymanComponent,
-    TableComponent,
-  ],
+  declarations: [AdminPageComponent, UserTableComponent],
   imports: [
+    HttpClientModule,
+    CommonModule,
     UsersRoutingModule,
     MatCardModule,
     MatIconModule,
@@ -37,6 +38,11 @@ import { TableComponent } from './components/table/table.component';
     MatPaginatorModule,
     MatFormFieldModule,
     SharedModule,
+    MatInputModule,
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatSortModule
   ],
+  providers: [UsersService, AdminService],
 })
 export class UsersModule {}

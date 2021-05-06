@@ -1,15 +1,9 @@
-<mat-card class="revenue-chart">
-    <mat-card-title class="revenue-chart__header">
-      <h5 class="revenue-chart__header-title">Claims Chart</h5>
-  
-      <app-settings-menu></app-settings-menu>
-    </mat-card-title>
-  
-    <mat-card-content class="revenue-chart__content">
-      <div
-        class="revenue-chart__content-chart"
-        echarts
-        [options]="revenueChart"
-      ></div>
-    </mat-card-content>
-  </mat-card>
+<apx-chart
+  [series]="apexPieChartOptions.series"
+  [chart]="apexPieChartOptions.chart"
+  [labels]="apexPieChartOptions.labels"
+  [responsive]="apexPieChartOptions.responsive"
+  [xaxis]="apexPieChartOptions.xaxis"
+  [legend]="apexPieChartOptions.legend"
+  [colors]="apexPieChartOptions.colors"
+></apx-chart>

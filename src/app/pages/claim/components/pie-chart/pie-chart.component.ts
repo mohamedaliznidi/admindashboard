@@ -1,16 +1,47 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { PieChartData } from '../../models';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexDataLabels,
+  ApexFill,
+  ApexGrid,
+  ApexLegend,
+  ApexMarkers,
+  ApexNonAxisChartSeries,
+  ApexResponsive,
+  ApexStroke,
+  ApexTooltip,
+  ApexXAxis,
+} from 'ng-apexcharts';
 import { colors } from '../../../../consts';
+interface PieChartData {
+  series: number[];
+  labels: string[];
+}
+type ChartOptions = {
+  series: ApexAxisChartSeries | ApexNonAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  stroke: ApexStroke;
+  tooltip: ApexTooltip;
+  dataLabels: ApexDataLabels;
+  legend: ApexLegend;
+  colors: string[];
+  markers: ApexMarkers;
+  grid: ApexGrid;
+  labels: string[];
+  responsive: ApexResponsive[];
+  fill: ApexFill;
+};
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss'],
+  styleUrls: ['./pie-chart.component.css'],
 })
 export class PieChartComponent implements OnInit {
-  @Input() revenueCharData: PieChartData;
-  public revenueChart: any;
+  @Input() pieChartData: PieChartData;
+  public apexPieChartOptions: Partial<ChartOptions>;
   public colors: typeof colors = colors;
 
   public ngOnInit(): void {
@@ -18,54 +49,27 @@ export class PieChartComponent implements OnInit {
   }
 
   public initChart(): void {
-    this.revenueChart = {
-      color: [colors.GREEN, colors.PINK, colors.YELLOW, colors.BLUE],
-      tooltip: {
-        trigger: 'item',
+    this.apexPieChartOptions = {
+      series: this.pieChartData.series,
+      chart: {
+        type: 'donut',
+        height: 400,
       },
-      legend: {
-        top: 'center',
-        right: 'right',
-        data: ['Group A', 'Group B', 'Group C', 'Group D'],
-        textStyle: {
-          color: '#6E6E6E',
-        },
-      },
-      series: [
-        {
-          type: 'pie',
-          radius: ['50%', '70%'],
-          center: ['24%', '50%'],
-          label: {
-            show: false,
-          },
-          labelLine: {
-            normal: {
-              show: false,
-            },
-          },
-          hoverAnimation: false,
-          avoidLabelOverlap: false,
-          data: [
-            {
-              name: 'Group A',
-              value: this.revenueCharData.groupA,
-            },
-            {
-              name: 'Group B',
-              value: this.revenueCharData.groupB,
-            },
-            {
-              name: 'Group C',
-              value: this.revenueCharData.groupC,
-            },
-            {
-              name: 'Group D',
-              value: this.revenueCharData.groupD,
-            },
-          ],
-        },
+      colors: [
+        colors.BLUE,
+        colors.YELLOW,
+        colors.PINK,
+        colors.GREEN,
+        colors.VIOLET,
       ],
+      legend: {
+        position: 'bottom',
+        itemMargin: {
+          horizontal: 5,
+          vertical: 30,
+        },
+      },
+      labels: this.pieChartData.labels,
     };
   }
 }
