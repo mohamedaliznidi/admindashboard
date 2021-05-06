@@ -2,7 +2,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+
+import { CategoryPageComponent } from './pages/Product-categories/category-page/category-page.component';
+
 import { AdminGuard, AuthGuard, ManagerGuard } from './pages/auth/guards';
+
 
 const routes: Routes = [
   {
@@ -21,6 +25,30 @@ const routes: Routes = [
         (m) => m.NotificationModule
       ),
   },
+
+
+  {
+    path: 'category',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/Product-categories/category.module').then(m => m.CategoryModule)
+  },
+
+
+  {
+    path: 'product',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/add-product/product.module').then(m => m.ProductModule)
+  },
+
+ {
+    path: 'publicity',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/publicity/publicity.module').then(m => m.PublicityModule)
+  },
+
+
+
   {
     path: 'calender',
     pathMatch: 'full',

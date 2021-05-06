@@ -1,6 +1,13 @@
 export enum routes {
   DASHBOARD = '/dashboard',
   NOTIFICATION = '/notification',
+
+  CATEGORY = '/category',
+  ADDPRODUCT ='/product/addproduct',
+  PRODUCTS='/product/products',
+  ADDPUBLICITY='/publicity/addpublicity',
+  PUBLICITIES='/publicity/publicities',
+
   LOGIN = '/login',
   ADMIN = '/users/admin',
   CLIENT = '/users/client',
@@ -8,4 +15,5 @@ export enum routes {
   DELIVERYMAN = '/users/deliveryman',
   CLAIM = '/claim',
   CALENDER = '/calender',
+
 }
