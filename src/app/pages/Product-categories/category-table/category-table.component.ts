@@ -3,8 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ok } from 'assert';
-import { Customer, Employee } from '../../tables/models';
+
 import { Category } from '../models/Category';
 import { CategoryService } from '../services';
 

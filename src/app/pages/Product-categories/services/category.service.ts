@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Customer, Employee } from '../../tables/models';
 import { Category } from '../models/Category';
 
 
