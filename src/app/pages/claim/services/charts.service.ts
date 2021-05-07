@@ -162,6 +162,7 @@ export class ChartsService {
       ],
     });
   }
+  
 
   public loadPieChartData(): Observable<PieChartData> {
     return of({

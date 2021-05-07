@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   hmr: false,
-  baseUrl: (String = 'https://consomitounsi.herokuapp.com/'),
+  baseUrl:  'https://consomitounsi.herokuapp.com',
 };
 
 /*
