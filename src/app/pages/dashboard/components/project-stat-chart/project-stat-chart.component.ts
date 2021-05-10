@@ -18,6 +18,58 @@ import {
   ApexXAxis,
   ApexYAxis,
 } from 'ng-apexcharts';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+interface Weather {
+  location: Location;
+  current: Current;
+  forecast: Forecast;
+}
+
+interface Forecast {
+  forecastday: Forecastday[];
+}
+
+interface Forecastday {
+  date: string;
+  date_epoch: number;
+  day: Day;
+  astro: Condition;
+  hour: Hour[];
+}
+
+interface Hour {
+  condition: Condition;
+}
+
+interface Day {
+  avgtemp_c: number;
+  condition: Condition;
+}
+
+interface Current {
+  temp_c: number;
+  condition: Condition;
+  wind_mph: number;
+  precip_mm: number;
+  humidity: number;
+  uv: number;
+}
+
+interface Condition {
+  text: any;
+}
+
+interface Location {
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  tz_id: string;
+  localtime_epoch: number;
+  localtime: string;
+}
 
 type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -52,8 +104,86 @@ export class ProjectStatChartComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   public projectsType: typeof ProjectsType = ProjectsType;
   public colors: typeof colors = colors;
+  public weather: Weather = {
+    location: {
+      name: '',
+      region: '',
+      country: '',
+      lat: 0,
+      lon: 0,
+      tz_id: '',
+      localtime_epoch: 0,
+      localtime: '',
+    },
+    current: {
+      temp_c: 0,
+      condition: { text: '' },
+      wind_mph: 0,
+      precip_mm: 0,
+      humidity: 0,
+      uv: 0,
+    },
+    forecast: {
+      forecastday: [
+        {
+          date: '',
+          date_epoch: 0,
+          day: {
+            avgtemp_c: 0,
+            condition: { text: '' },
+          },
+          astro: { text: '' },
+          hour: [{ condition: { text: '' } }],
+        },
+        {
+          date: '',
+          date_epoch: 0,
+          day: {
+            avgtemp_c: 0,
+            condition: { text: '' },
+          },
+          astro: { text: '' },
+          hour: [{ condition: { text: '' } }],
+        },
+        {
+          date: '',
+          date_epoch: 0,
+          day: {
+            avgtemp_c: 0,
+            condition: { text: '' },
+          },
+          astro: { text: '' },
+          hour: [{ condition: { text: '' } }],
+        },
+      ],
+    },
+  };
+  public d: Date;
+  public weekday = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  public n: number = 0;
+  constructor(private http: HttpClient) {}
+
+  public loadWeather(): Observable<Weather> {
+    return this.http.get<Weather>(
+      'http://api.weatherapi.com/v1/forecast.json?key=d60190bd9fb5489c89284443212602&q=London&days=7&aqi=no&alerts=no'
+    );
+  }
 
   public ngOnInit(): void {
+    this.loadWeather().subscribe((res) => {
+      this.weather = res;
+      console.log(this.weather.forecast.forecastday[0].day.avgtemp_c);
+      this.d = new Date();
+      this.n = this.d.getDay();
+    });
     this.selectedStatsLightBlueData = this.projectsStatsData.lightBlue.daily;
     this.selectedStatsSingAppData = this.projectsStatsData.singApp.daily;
     this.selectedStatsRNSData = this.projectsStatsData.rns.daily;

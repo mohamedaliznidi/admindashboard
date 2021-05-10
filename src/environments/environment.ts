@@ -5,11 +5,13 @@
 export const environment = {
   production: false,
   hmr: false,
+
 //https://consomitounsiji.herokuapp.com/
 //apiBaseUrlji: 'https://consomitounsiji.herokuapp.com'
 apiBaseUrlji: 'http://localhost:8080',
 
   baseUrl: 'https://consomitounsi.herokuapp.com/',
+
 
 };
 

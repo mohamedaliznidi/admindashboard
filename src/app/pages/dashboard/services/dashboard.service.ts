@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { AdminService, UsersService } from '../../users/services';
 
 import {
   DailyLineChartData,
@@ -15,6 +16,16 @@ import {
   providedIn: 'root',
 })
 export class DashboardService {
+  public clientNbm: number;
+  public AdminNbm: number;
+  public managerNbm: number;
+  public usersNbm: number;
+  constructor(private service: UsersService, private service2: AdminService) {
+    this.service.loadAll().subscribe((res) => {this.usersNbm=res.length});
+    this.service.loadClients().subscribe((res) => {this.clientNbm=res.length});
+    this.service.loadManagers().subscribe((res) => {this.managerNbm=res.length});
+    this.service2.loadAdmins().subscribe((res) => {this.AdminNbm=res.length});
+  }
   public loadDailyLineChartData(): Observable<DailyLineChartData> {
     return of({
       dailyData: {

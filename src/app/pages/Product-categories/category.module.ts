@@ -17,7 +17,9 @@ import { CategoryPageComponent } from './category-page/category-page.component';
 import { CategoryTableComponent } from './category-table/category-table.component';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryService } from './services/category.service';
+
 import { ModelsComponent } from './models/models.component';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';

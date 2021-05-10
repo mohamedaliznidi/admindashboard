@@ -7,9 +7,7 @@
 
   <mat-card-content class="visits-chart__content">
     <div class="visits-chart__content-info">
-      <h6 class="visits-chart__content-info-title">
-        {{ visitsChartData.all }}
-      </h6>
+      <h6 class="visits-chart__content-info-title">Date</h6>
       <ngx-trend
         class="visits-chart__content-info-chart"
         [data]="visitsChartData.data"
@@ -22,23 +20,23 @@
 
     <div class="visits-chart__content-stats">
       <div>
-        <p class="visits-chart__content-stats-title">Registration</p>
+        <p class="visits-chart__content-stats-title"></p>
         <p class="visits-chart__content-stats-data">
-          {{ visitsChartData.registration }}
+          {{ cDate }}
         </p>
       </div>
 
       <div>
-        <p class="visits-chart__content-stats-title">Sign Out</p>
+        <p class="visits-chart__content-stats-title">Number</p>
         <p class="visits-chart__content-stats-data">
-          {{ visitsChartData.signOut }}
+          {{ clientNbm }}
         </p>
       </div>
 
       <div>
         <p class="visits-chart__content-stats-title">Rate</p>
         <p class="visits-chart__content-stats-data">
-          {{ visitsChartData.rate }}%
+          {{ rate }}%
         </p>
       </div>
     </div>

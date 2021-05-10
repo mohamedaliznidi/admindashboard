@@ -9,7 +9,7 @@ import { AuthPageComponent } from './containers';
 import { AuthRoutingModule } from './auth-routing.module';
 import { YearPipe } from './pipes';
 import { AuthService, EmailService } from './services';
-import { LoginFormComponent, SignFormComponent } from './components';
+import { LoginFormComponent } from './components';
 import { AdminGuard, AuthGuard, ManagerGuard } from './guards';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     AuthPageComponent,
     YearPipe,
     LoginFormComponent,
-    SignFormComponent,
     WelcomeComponent,
   ],
   imports: [

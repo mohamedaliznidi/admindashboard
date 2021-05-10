@@ -1,17 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Users } from '../models';
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private apiServerUrl = 'http://localhost:8080/api/';
+  private apiServerUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {} //private http: HttpClient
 
   public getUsers(): Observable<Users[]> {
     return this.http.get<Users[]>(`${this.apiServerUrl}admins/users`);
+  }
+
+  public loadManagers(): Observable<Users[]> {
+    return this.http.get<Users[]>(`${this.apiServerUrl}/api/managers`);
+  }
+  public loadClients(): Observable<Users[]> {
+    return this.http.get<Users[]>(`${this.apiServerUrl}/api/clients`);
+  }
+  public loadAll(): Observable<Users[]> {
+    return this.http.get<Users[]>(`${this.apiServerUrl}/api/admins/users`);
   }
 
   public loadUserTableData(): Observable<Users[]> {
