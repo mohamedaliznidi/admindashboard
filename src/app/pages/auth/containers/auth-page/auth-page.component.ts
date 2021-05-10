@@ -13,20 +13,20 @@ export class AuthPageComponent {
   public todayDate: Date = new Date();
   public routers: typeof routes = routes;
 
-  constructor(
-    private service: AuthService,
-    private router: Router
-  ) { }
+  // constructor(
+  //   private service: AuthService,
+  //   private router: Router
+  // ) { }
 
-  public sendLoginForm(): void {
-    this.service.login();
+  // public sendLoginForm(): void {
+  //   this.service.login();
 
-    this.router.navigate([this.routers.DASHBOARD]).then();
-  }
+  //   this.router.navigate([this.routers.DASHBOARD]).then();
+  // }
 
-  public sendSignForm(): void {
-    this.service.sign();
+  // public sendSignForm(): void {
+  //   this.service.sign();
 
-    this.router.navigate([this.routers.DASHBOARD]).then();
-  }
+  //   this.router.navigate([this.routers.DASHBOARD]).then();
+  // }
 }

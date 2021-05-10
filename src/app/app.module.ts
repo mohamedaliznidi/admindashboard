@@ -32,7 +32,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ToastrModule.forRoot(),
     MatCardModule,
     MatButtonModule,
-    NgbModule,
+
+    NgbModule
+  
+
   ],
   providers: [],
   bootstrap: [AppComponent]
