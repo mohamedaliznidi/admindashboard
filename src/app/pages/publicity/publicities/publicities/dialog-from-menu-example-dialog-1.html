@@ -8,7 +8,8 @@
       <mat-card-subtitle> Category : {{datas.product.categoryname}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{datas.image}}" alt="Photo of publicity" >
-
+    <mat-card-subtitle>Title : {{datas.title}}</mat-card-subtitle>
+    <mat-card-subtitle>Subtitle : {{datas.subtitle}}</mat-card-subtitle>
     <mat-card-actions>
       <div class="buttons">
       <button mat-button (click)="deletepublicity(datas.id)">Delete</button>

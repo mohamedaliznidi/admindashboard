@@ -10,4 +10,6 @@ publicitycategory: string;
 image :string;
 current : boolean;
 product: Product;
+title: string;
+subtitle:string;
 }

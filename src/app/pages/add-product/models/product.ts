@@ -76,6 +76,7 @@
 }*/
 
 import { Moment } from "moment";
+import { Category } from "../../Product-categories/models/Category";
 
 
 
@@ -102,5 +103,6 @@ export class Product {
   proteines:number;
   sel:number;
   fruits:number; 
+  productCategory: Category;
 
 }

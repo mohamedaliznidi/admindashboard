@@ -14,6 +14,8 @@ export interface DialogData {
   product:Product;
   current:boolean;
   image:string;
+  title:string;
+  subtitle:string;
   
 }
 
@@ -36,20 +38,21 @@ ids : number;
 products:Product;
 currents:boolean;
 images:string;
+titles:string;
+subtitles:string;
 
-openDialog(id,publicitycategory,product,current,image) {
+openDialog(id,publicitycategory,product,current,image,title,subtitle) {
  this.ids=id;
 this.publicitycategorys=publicitycategory;
 this.products=product;
 this.currents=current;
 this.images=image;
+this.titles=title;
+this.subtitles=subtitle;
 
-console.log(current);
-console.log(this.currents);
-console.log(publicitycategory);
-console.log(this.publicitycategorys);
+
   const dialogRef = this.dialog.open(DialogFromMenuExampleDialog1, { data: {id: this.ids , publicitycategory: this.publicitycategorys,
-    product: this.products,current: this.currents, image: this.images
+    product: this.products,current: this.currents, image: this.images, title: this.titles,subtitle: this.subtitles
   }});
 
   // Manually restore focus to the menu trigger since the element that

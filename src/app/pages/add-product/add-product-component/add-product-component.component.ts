@@ -64,7 +64,7 @@ export class AddProductComponentComponent implements OnInit {
 
     message:any;
     onSubmit(selectedid){
-
+      console.log(this.product);
     let resp=this.productservice.addProduct(selectedid,this.product);
       resp.subscribe((data)=>this.message=data); 
 

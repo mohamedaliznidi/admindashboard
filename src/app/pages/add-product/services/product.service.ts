@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -8,42 +9,43 @@ import { Product } from '../models/product';
 })
 export class ProductService {
   constructor(private http : HttpClient){}
+  private apiserverUrlji=environment.apiBaseUrlji;
   public loadProductTableData(): Observable<Product[]> {
   
 
-      return this.http.get<Product[]>(`http://localhost:8080/product/products`)
+      return this.http.get<Product[]>(`${this.apiserverUrlji}/product/products`)
 
   }
 
   deleteProduct(id){
-    const deleteEndpoint ='http://localhost:8080/product/deleteproduct/'+ id;
+    const deleteEndpoint =`${this.apiserverUrlji}/product/deleteproduct/`+ id;
     return this.http.delete(deleteEndpoint)
   }
 
   removePromotion(id){
-    const promotionendpoint ='http://localhost:8080/product/annulerpromotion/'+ id ;
+    const promotionendpoint =`${this.apiserverUrlji}/product/annulerpromotion/`+ id ;
     return this.http.get(promotionendpoint)
   }
 
   addPromotion(id,p){
-    const promotionendpoint ='http://localhost:8080/product/promotion/'+ id +'/'+p ;
+    const promotionendpoint =`${this.apiserverUrlji}/product/promotion/`+ id +`/`+p ;
     return this.http.get(promotionendpoint)
     
   }
 
   addProduct(selectedid,data){
 
-    const addendpoint ='http://localhost:8080/product/addproduct/'+selectedid;
+    const addendpoint =`${this.apiserverUrlji}/product/addproduct/`+selectedid;
     return this.http.post(addendpoint,data)
   }
 
   public getProduct(id: number): Observable<Product> {
-    const getendpoint ='http://localhost:8080/product/findproduct/'+id;
+    const getendpoint =`${this.apiserverUrlji}/product/findproduct/`+id;
     return this.http.get<Product>(getendpoint);
   }
 
   updateProduct(product: Product){
-    const putendpoint ='http://localhost:8080/product/modifyproduct';
+    const putendpoint =`${this.apiserverUrlji}/product/modifyproduct`;
     return this.http.put(putendpoint,product);
   
 }

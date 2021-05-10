@@ -131,7 +131,7 @@ public getcategories(): void {
           }
 
         save(product): void {
-          console.log(product);
+        
           this.productservice.updateProduct(product)
             .subscribe();
             this.getproducts();
