@@ -104,7 +104,60 @@ export class ProjectStatChartComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   public projectsType: typeof ProjectsType = ProjectsType;
   public colors: typeof colors = colors;
-  public weather: Weather;
+  public weather: Weather = {
+    location: {
+      name: '',
+      region: '',
+      country: '',
+      lat: 0,
+      lon: 0,
+      tz_id: '',
+      localtime_epoch: 0,
+      localtime: '',
+    },
+    current: {
+      temp_c: 0,
+      condition: { text: '' },
+      wind_mph: 0,
+      precip_mm: 0,
+      humidity: 0,
+      uv: 0,
+    },
+    forecast: {
+      forecastday: [
+        {
+          date: '',
+          date_epoch: 0,
+          day: {
+            avgtemp_c: 0,
+            condition: { text: '' },
+          },
+          astro: { text: '' },
+          hour: [{ condition: { text: '' } }],
+        },
+        {
+          date: '',
+          date_epoch: 0,
+          day: {
+            avgtemp_c: 0,
+            condition: { text: '' },
+          },
+          astro: { text: '' },
+          hour: [{ condition: { text: '' } }],
+        },
+        {
+          date: '',
+          date_epoch: 0,
+          day: {
+            avgtemp_c: 0,
+            condition: { text: '' },
+          },
+          astro: { text: '' },
+          hour: [{ condition: { text: '' } }],
+        },
+      ],
+    },
+  };
   public d: Date;
   public weekday = [
     'Sunday',
@@ -115,7 +168,7 @@ export class ProjectStatChartComponent implements OnInit {
     'Friday',
     'Saturday',
   ];
-  public n: number;
+  public n: number = 0;
   constructor(private http: HttpClient) {}
 
   public loadWeather(): Observable<Weather> {

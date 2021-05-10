@@ -48,11 +48,17 @@
                 -- {{ element.published_at }}
               </span>
             </div>
-            <button mat-flat-button color="warn" class="news">
-              <a href="{{ element.url }}"
-                ><mat-icon class="news-menu-icon">read_more</mat-icon></a
+            <div class="example-button-container">
+              <a href="{{ element.url }}">
+                <button
+                  mat-fab
+                  color="primary"
+                  aria-label="Example icon button with a delete icon"
+                >
+                  <mat-icon>read_more</mat-icon>
+                </button></a
               >
-            </button>
+            </div>
           </div>
         </td>
       </ng-container>

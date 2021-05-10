@@ -14,4 +14,7 @@ export class AdminService {
   public loadAdmins(): Observable<Users[]> {
     return this.http.get<Users[]>(`${this.apiServerUrl}/api/admins`);
   }
+  public deleteAdmin(id): Observable<any> {
+    return this.http.delete<any>(`${this.apiServerUrl}/api/admins?id=${id}`);
+  }
 }
