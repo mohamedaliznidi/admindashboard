@@ -1,175 +1,67 @@
 <div class="project-stat">
   <mat-card class="project-stat__item">
-    <mat-card-title class="project-stat__title">
-      <h5 class="project-stat__title-text">
-        {{ selectedStatsLightBlueData.name }}
-      </h5>
-
-      <app-date-menu
-        (changeDateType)="changeDateType($event, projectsType.lightBlue)"
-      ></app-date-menu>
-    </mat-card-title>
-    <mat-card-content class="project-stat-content">
-      <div class="project-stat-content__total-info-wrapper">
-        <div class="project-stat-content__total-info">
-          <p class="project-stat-content__total-info-users">
-            {{ selectedStatsLightBlueData.users }}
-          </p>
-          <p
-            *ngIf="selectedStatsLightBlueData.percent > 0"
-            class="project-stat-content__total-info-percent"
-          >
-            +{{ selectedStatsLightBlueData.percent }}%
-          </p>
-          <p
-            *ngIf="selectedStatsLightBlueData.percent < 0"
-            class="project-stat-content__total-info-percent-warn"
-          >
-            {{ selectedStatsLightBlueData.percent }}%
-          </p>
+    <div class="container">
+      <div class="weather-side">
+        <div class="weather-gradient"></div>
+        <div class="date-container">
+          <h2 class="date-dayname">{{ weekday[n] }}</h2>
+          <span class="date-day">{{
+            weather.forecast.forecastday[0].date
+          }}</span
+          ><i class="location-icon" data-feather="map-pin"></i>
         </div>
-        <div class="project-stat-content__total-info-chart">
-          <apx-chart
-            [series]="selectedStatsLightBlueData.series"
-            [chart]="chartOptions.chart"
-            [dataLabels]="chartOptions.dataLabels"
-            [plotOptions]="chartOptions.plotOptions"
-            [yaxis]="chartOptions.yaxis"
-            [legend]="chartOptions.legend"
-            [fill]="chartOptions.fill"
-            [stroke]="chartOptions.stroke"
-            [tooltip]="chartOptions.tooltip"
-            [xaxis]="chartOptions.xaxis"
-            [grid]="chartOptions.grid"
-            [colors]="colors.BLUE"
-          ></apx-chart>
+        <div class="weather-container">
+          <h1 class="weather-temp">{{ weather.current.temp_c }} °C</h1>
+          <h3 class="weather-desc">{{ weather.current.condition.text }}</h3>
         </div>
       </div>
-
-      <div class="project-stat-content__stat-wrapper">
-        <div class="project-stat-content__stat-item">
-          <div class="project-stat-content__stat-value-wrapper">
-            <h6 class="project-stat-content__stat-value">
-              {{ selectedStatsLightBlueData.registrations }}
-            </h6>
-            <mat-icon class="project-stat-content__stat-icon"
-              >arrow_upward</mat-icon
-            >
+      <div class="info-side">
+        <div class="today-info-container">
+          <div class="today-info">
+            <div class="precipitation">
+              <span class="title">PRECIPITATION</span
+              ><span class="value">{{ weather.current.precip_mm }} %</span>
+              <div class="clear"></div>
+            </div>
+            <div class="humidity">
+              <span class="title">HUMIDITY</span
+              ><span class="value">{{ weather.current.humidity }} %</span>
+              <div class="clear"></div>
+            </div>
+            <div class="wind">
+              <span class="title">WIND</span
+              ><span class="value">{{ weather.current.wind_mph }} m/h</span>
+              <div class="clear"></div>
+            </div>
           </div>
-          <p class="project-stat-content__stat-item-title">Registrations</p>
         </div>
+        <div class="week-container">
+          <ul class="week-list">
+            <li class="active">
+              <span class="day-name">{{ weekday[n].substr(0, 3) }}</span
+              ><span class="day-temp"
+                >{{ weather.forecast.forecastday[0].day.avgtemp_c }}°C</span
+              >
+            </li>
+            <li>
+              <span class="day-name">{{ weekday[n + 1].substr(0, 3) }}</span
+              ><span class="day-temp"
+                >{{ weather.forecast.forecastday[1].day.avgtemp_c }}°C</span
+              >
+            </li>
+            <li>
+              <span class="day-name">{{ weekday[n + 2].substr(0, 3) }}</span
+              ><span class="day-temp"
+                >{{ weather.forecast.forecastday[2].day.avgtemp_c }}°C</span
+              >
+            </li>
 
-        <div class="project-stat-content__stat-item">
-          <div class="project-stat-content__stat-value-wrapper">
-            <h6 class="project-stat-content__stat-value">
-              {{ selectedStatsLightBlueData.bounce }}
-            </h6>
-            <mat-icon class="project-stat-content__stat-icon"
-              >arrow_upward</mat-icon
-            >
-          </div>
-          <p class="project-stat-content__stat-item-title">Bounce Rate</p>
-        </div>
-
-        <div class="project-stat-content__stat-item">
-          <div class="project-stat-content__stat-value-wrapper">
-            <h6 class="project-stat-content__stat-value">
-              {{ selectedStatsLightBlueData.views }}
-            </h6>
-            <mat-icon class="project-stat-content__stat-icon-warn"
-              >arrow_upward</mat-icon
-            >
-          </div>
-          <p class="project-stat-content__stat-item-title">Views</p>
+            <div class="clear"></div>
+          </ul>
         </div>
       </div>
-    </mat-card-content>
+    </div>
   </mat-card>
 
-  <mat-card class="project-stat__item">
-    <mat-card-title class="project-stat__title">
-      <h5 class="project-stat__title-text">
-        {{ selectedStatsSingAppData.name }}
-      </h5>
-
-      <app-date-menu
-        (changeDateType)="changeDateType($event, projectsType.SingApp)"
-      ></app-date-menu>
-    </mat-card-title>
-    <mat-card-content class="project-stat-content">
-      <div class="project-stat-content__total-info-wrapper">
-        <div class="project-stat-content__total-info">
-          <p class="project-stat-content__total-info-users">
-            {{ selectedStatsSingAppData.users }}
-          </p>
-          <p
-            *ngIf="selectedStatsSingAppData.percent > 0"
-            class="project-stat-content__total-info-percent"
-          >
-            +{{ selectedStatsSingAppData.percent }}%
-          </p>
-          <p
-            *ngIf="selectedStatsSingAppData.percent < 0"
-            class="project-stat-content__total-info-percent-warn"
-          >
-            {{ selectedStatsSingAppData.percent }}%
-          </p>
-        </div>
-        <div class="project-stat-content__total-info-chart">
-          <apx-chart
-            [series]="selectedStatsSingAppData.series"
-            [chart]="chartOptions.chart"
-            [dataLabels]="chartOptions.dataLabels"
-            [plotOptions]="chartOptions.plotOptions"
-            [yaxis]="chartOptions.yaxis"
-            [legend]="chartOptions.legend"
-            [fill]="chartOptions.fill"
-            [stroke]="chartOptions.stroke"
-            [tooltip]="chartOptions.tooltip"
-            [xaxis]="chartOptions.xaxis"
-            [grid]="chartOptions.grid"
-            [colors]="colors.YELLOW"
-          ></apx-chart>
-        </div>
-      </div>
-
-      <div class="project-stat-content__stat-wrapper">
-        <div class="project-stat-content__stat-item">
-          <div class="project-stat-content__stat-value-wrapper">
-            <h6 class="project-stat-content__stat-value">
-              {{ selectedStatsSingAppData.registrations }}
-            </h6>
-            <mat-icon class="project-stat-content__stat-icon"
-              >arrow_upward</mat-icon
-            >
-          </div>
-          <p class="project-stat-content__stat-item-title">Registrations</p>
-        </div>
-
-        <div class="project-stat-content__stat-item">
-          <div class="project-stat-content__stat-value-wrapper">
-            <h6 class="project-stat-content__stat-value">
-              {{ selectedStatsSingAppData.bounce }}
-            </h6>
-            <mat-icon class="project-stat-content__stat-icon"
-              >arrow_upward</mat-icon
-            >
-          </div>
-          <p class="project-stat-content__stat-item-title">Bounce Rate</p>
-        </div>
-
-        <div class="project-stat-content__stat-item">
-          <div class="project-stat-content__stat-value-wrapper">
-            <h6 class="project-stat-content__stat-value">
-              {{ selectedStatsSingAppData.views }}
-            </h6>
-            <mat-icon class="project-stat-content__stat-icon"
-              >arrow_upward</mat-icon
-            >
-          </div>
-          <p class="project-stat-content__stat-item-title">Views</p>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <mat-card class="project-stat__item"> heyyyy </mat-card>
 </div>

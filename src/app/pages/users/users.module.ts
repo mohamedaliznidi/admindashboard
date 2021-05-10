@@ -21,9 +21,16 @@ import { AdminService } from './services/admin.service';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
+import { AllComponent } from './containers/all/all.component';
+import { ManagersPageComponent } from './containers/managers-page/managers-page.component';
+import { ClientsPageComponent } from './containers/clients-page/clients-page.component';
+import { ManagersTableComponent } from './components/managers-table/managers-table.component';
+import { ClientsTableComponent } from './components/clients-table/clients-table.component';
+import { AllTableComponent } from './components/all-table/all-table.component';
+import { HeyyyComponent } from './components/heyyy/heyyy.component';
 
 @NgModule({
-  declarations: [AdminPageComponent, UserTableComponent],
+  declarations: [AdminPageComponent, UserTableComponent, AllComponent, ManagersPageComponent, ClientsPageComponent, ManagersTableComponent, ClientsTableComponent, AllTableComponent, HeyyyComponent],
   imports: [
     HttpClientModule,
     CommonModule,

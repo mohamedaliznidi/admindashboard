@@ -12,8 +12,10 @@
     [mode]="mobileQuery.matches ? 'over' : 'side'"
     [fixedInViewport]="mobileQuery.matches"
   >
-    <app-sidebar></app-sidebar>
-    <!--<app-sidebar-manager></app-sidebar-manager>-->
+    <app-sidebar *ngIf="admin; else elseBlock"></app-sidebar>
+    <ng-template #elseBlock
+      ><app-sidebar-manager></app-sidebar-manager
+    ></ng-template>
   </mat-sidenav>
   <mat-sidenav-content class="layout-content">
     <ng-content></ng-content>

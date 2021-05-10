@@ -24,10 +24,11 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  public getUser(): Observable<User> {
-    return of({
-      name: 'yoooo',
-      lastName: 'last',
-    });
+  public getUser(data,auth): Observable<any> {
+    if (auth =='ADMIN') {
+      return this.http.get(`${this.apiServerUrl}/api/admins?username=${data}`);
+    } else {
+      return this.http.get(`${this.apiServerUrl}/api/managers?username=${data}`);
+    }
   }
 }

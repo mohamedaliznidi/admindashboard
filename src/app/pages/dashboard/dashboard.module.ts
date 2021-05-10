@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { TrendModule } from 'ngx-trend';
@@ -23,11 +23,11 @@ import {
   RevenueChartComponent,
   DailyLineChartComponent,
   SupportRequestsComponent,
-  ProjectStatChartComponent
+  ProjectStatChartComponent,
 } from './components';
 import { SharedModule } from '../../shared/shared.module';
 import { DashboardService } from './services';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { DashboardService } from './services';
     RevenueChartComponent,
     DailyLineChartComponent,
     SupportRequestsComponent,
-    ProjectStatChartComponent
+    ProjectStatChartComponent,
   ],
   imports: [
     CommonModule,
@@ -56,13 +56,10 @@ import { DashboardService } from './services';
     MatInputModule,
     NgApexchartsModule,
     FormsModule,
-    SharedModule
+    MatPaginatorModule,
+    SharedModule,
   ],
-  exports: [
-    DailyLineChartComponent
-  ],
-  providers: [
-    DashboardService
-  ]
+  exports: [DailyLineChartComponent],
+  providers: [DashboardService, DatePipe],
 })
-export class DashboardModule { }
+export class DashboardModule {}
