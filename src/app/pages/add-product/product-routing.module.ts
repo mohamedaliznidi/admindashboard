@@ -2,10 +2,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AddProductPageComponent } from './add-product-page/add-product-page.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
+import { UpdateProductPageComponent } from './update-product-page/update-product-page.component';
 
 
 
-const routes: Routes = [
+
+export const routes: Routes = [
   {
     path: 'addproduct',
     component: AddProductPageComponent
@@ -14,6 +16,11 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsPageComponent
+  },
+
+  {
+    path: 'updateproduct/:id',
+    component : UpdateProductPageComponent
   }
 
 ];

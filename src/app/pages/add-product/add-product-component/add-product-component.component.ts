@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { Category } from '../../Product-categories/models/Category';
 import { CategoryService } from '../../Product-categories/services';
 import { Product } from '../models/product';
+import { ProductsComponent } from '../products/products.component';
+import { ProductService } from '../services';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 
@@ -40,7 +43,7 @@ export class AddProductComponentComponent implements OnInit {
 
 
 
-  constructor(private http :HttpClient,private categoryservice : CategoryService) {
+  constructor(private http :HttpClient,private categoryservice : CategoryService ,private productservice : ProductService,private _snackBar: MatSnackBar) {
     this.categories=[];
   
    }
@@ -58,15 +61,18 @@ export class AddProductComponentComponent implements OnInit {
       );
     }
 
-    onSubmit(data,selectedid){
-      console.log(selectedid);
+
+    message:any;
+    onSubmit(selectedid){
       console.log(this.product);
-    
-      const addendpoint ='http://localhost:8080/product/addproduct/'+selectedid;
-      return this.http.post(addendpoint,data)
-      
+    let resp=this.productservice.addProduct(selectedid,this.product);
+      resp.subscribe((data)=>this.message=data); 
+
+  
+ 
  
     }
+
 
 
     
@@ -87,6 +93,26 @@ export class AddProductComponentComponent implements OnInit {
       }
     }*/
     
+
+    durationInSeconds = 5;
+    openSnackBar() {
+      this._snackBar.openFromComponent(PizzaPartyComponent, {
+        duration: this.durationInSeconds * 1000,
+      });
+    }
   }
+  
+
+  
+  @Component({
+    selector: 'snack-bar-component-example-snack',
+    templateUrl: 'snack-bar-component-example-snack.html',
+    styles: [`
+      .example-pizza-party {
+        color: hotpink;
+      }
+    `],
+  })
+  export class PizzaPartyComponent {}
 
 

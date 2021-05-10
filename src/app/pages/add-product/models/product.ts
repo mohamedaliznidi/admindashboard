@@ -1,4 +1,4 @@
-export class Product {
+/*export class Product {
 
 
 
@@ -45,7 +45,7 @@ export class Product {
     ) {
         this.id = 0
         this.name = name
-        this.categoryname = ""
+        this.categoryname = categoryname;
         this.promotion = 0
         this.code = code
         this.initial_price = 0
@@ -72,5 +72,37 @@ export class Product {
     proteines?:number;
     sel?:number;
     fruits?:number; 
+
+}*/
+
+import { Moment } from "moment";
+import { Category } from "../../Product-categories/models/Category";
+
+
+
+export class Product {
+  id : number;
+  name:string;
+  categoryname:string;
+  promotion: number;
+  code:string;
+  initial_price:number;
+  price:number;
+  quantity:number;
+  image:string;
+  expDate:Moment;
+  generalrate:number;
+  nature:string;
+  matiere:number;
+  energie:number;
+  matiere_grasse:number;
+  description:string;
+  acide_gras_sature:number;
+  sucres:number;
+  fibres:number;
+  proteines:number;
+  sel:number;
+  fruits:number; 
+  productCategory: Category;
 
 }

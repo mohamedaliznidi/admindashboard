@@ -30,6 +30,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { DialogFromMenuExampleDialog, ProductsComponent } from './products/products.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UpdateProductComponent, UpdateProductPageComponent } from './update-product-page/update-product-page.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ AddProductPageComponent,
 AddProductComponentComponent,
 ProductsPageComponent,
 ProductsComponent,
-DialogFromMenuExampleDialog
+DialogFromMenuExampleDialog,
+UpdateProductPageComponent,
+UpdateProductComponent
  
 
   ],
@@ -70,7 +74,7 @@ DialogFromMenuExampleDialog
    
   ],
   providers: [
-    ProductService
+    ProductService,MatSnackBar
   ]
 })
 export class ProductModule { }
