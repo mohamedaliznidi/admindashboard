@@ -30,5 +30,21 @@ export class ProductService {
     return this.http.get(promotionendpoint)
     
   }
+
+  addProduct(selectedid,data){
+
+    const addendpoint ='http://localhost:8080/product/addproduct/'+selectedid;
+    return this.http.post(addendpoint,data)
+  }
+
+  public getProduct(id: number): Observable<Product> {
+    const getendpoint ='http://localhost:8080/product/findproduct/'+id;
+    return this.http.get<Product>(getendpoint);
+  }
+
+  updateProduct(product: Product){
+    const putendpoint ='http://localhost:8080/product/modifyproduct';
+    return this.http.put(putendpoint,product);
   
+}
 }

@@ -14,19 +14,19 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="buttons">
-      <button mat-button (click)="deleteproduct(data.id)">Delete</button>
-      <button mat-button>Update</button>
-      <button mat-button (click)="removepromotion(data.id)">Sale Cancel</button>
-    </div>
+      <button mat-button mat-dialog-close (click)="deleteproduct(data.id);openSnackBar()">Delete</button>
+      <button mat-button (click)="onSelect(data.id);onNoClick()">Update</button>
+      <button mat-button (click)="removepromotion(data.id);openSnackBar2()">Sale Cancel</button>
+    </div>         
       <br><br>
       <div>
         
     <form class="example-form">
 <mat-form-field id="percentage">
   <mat-label>Write a percentage</mat-label>
-        <input type="text" matInput [(ngModel)]="promotion" >
+        <input type="text" matInput [(ngModel)]="promotion" name="promotion">
       </mat-form-field>
-        <button mat-button (click)="addpromotion(data.id)">Add Sale</button>
+        <button mat-button (click)="addpromotion(data.id,promotion);openSnackBar1()">Add Sale</button>
     </form>
 
 

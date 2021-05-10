@@ -10,6 +10,7 @@ export enum routes {
   CATEGORY = '/category',
   ADDPRODUCT ='/product/addproduct',
   PRODUCTS='/product/products',
+  //UPDATEPRODUCT='/product/updateproduct/:id',
   ADDPUBLICITY='/publicity/addpublicity',
   PUBLICITIES='/publicity/publicities'
 }
