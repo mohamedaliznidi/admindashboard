@@ -28,6 +28,7 @@ import {
 import { SharedModule } from '../../shared/shared.module';
 import { DashboardService } from './services';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CurrencyComponent } from './components/currency/currency.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DailyLineChartComponent,
     SupportRequestsComponent,
     ProjectStatChartComponent,
+    CurrencyComponent,
   ],
   imports: [
     CommonModule,

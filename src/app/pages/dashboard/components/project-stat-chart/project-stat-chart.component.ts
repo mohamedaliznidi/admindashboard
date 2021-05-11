@@ -173,7 +173,7 @@ export class ProjectStatChartComponent implements OnInit {
 
   public loadWeather(): Observable<Weather> {
     return this.http.get<Weather>(
-      'http://api.weatherapi.com/v1/forecast.json?key=d60190bd9fb5489c89284443212602&q=London&days=7&aqi=no&alerts=no'
+      'https://api.weatherapi.com/v1/forecast.json?key=d60190bd9fb5489c89284443212602&q=London&days=7&aqi=no&alerts=no'
     );
   }
 
@@ -212,13 +212,12 @@ export class ProjectStatChartComponent implements OnInit {
           horizontal: false,
           columnWidth: '70%',
 
-        //  endingShape: 'rounded',
-         // startingShape: 'rounded'
+          //  endingShape: 'rounded',
+          // startingShape: 'rounded'
 
           endingShape: 'rounded',
           startingShape: 'rounded',
         },
-
       },
       dataLabels: {
         enabled: false,
@@ -258,13 +257,16 @@ export class ProjectStatChartComponent implements OnInit {
       case this.projectsType.lightBlue:
         switch (dateType) {
           case 'Weekly':
-            this.selectedStatsLightBlueData = this.projectsStatsData.lightBlue.week;
+            this.selectedStatsLightBlueData =
+              this.projectsStatsData.lightBlue.week;
             break;
           case 'Monthly':
-            this.selectedStatsLightBlueData = this.projectsStatsData.lightBlue.monthly;
+            this.selectedStatsLightBlueData =
+              this.projectsStatsData.lightBlue.monthly;
             break;
           default:
-            this.selectedStatsLightBlueData = this.projectsStatsData.lightBlue.daily;
+            this.selectedStatsLightBlueData =
+              this.projectsStatsData.lightBlue.daily;
         }
         break;
       case this.projectsType.SingApp:
@@ -273,10 +275,12 @@ export class ProjectStatChartComponent implements OnInit {
             this.selectedStatsSingAppData = this.projectsStatsData.singApp.week;
             break;
           case 'Monthly':
-            this.selectedStatsSingAppData = this.projectsStatsData.singApp.monthly;
+            this.selectedStatsSingAppData =
+              this.projectsStatsData.singApp.monthly;
             break;
           default:
-            this.selectedStatsSingAppData = this.projectsStatsData.singApp.daily;
+            this.selectedStatsSingAppData =
+              this.projectsStatsData.singApp.daily;
         }
         break;
       case this.projectsType.RNS:

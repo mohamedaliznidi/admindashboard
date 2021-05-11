@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-heyyy',
-  templateUrl: './heyyy.component.html',
-  styleUrls: ['./heyyy.component.css'],
+  selector: 'app-currency',
+  templateUrl: './currency.component.html',
+  styleUrls: ['./currency.component.css'],
 })
-export class HeyyyComponent implements OnInit {
+export class CurrencyComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
@@ -24,16 +24,16 @@ export class HeyyyComponent implements OnInit {
 
     document
       .getElementById('arc5')
-      .setAttribute('d', this.describeArc(150, 150, 110, 170, 200, 0));
+      .setAttribute('d', this.describeArc(170, 90, 90, 180, 160, 0));
     document
       .getElementById('arc6')
-      .setAttribute('d', this.describeArc(150, 150, 110, 140, 170, 0));
+      .setAttribute('d', this.describeArc(150, 150, 110, 20, 40, 0));
     document
       .getElementById('arc7')
-      .setAttribute('d', this.describeArc(150, 150, 110, 110, 140, 0));
+      .setAttribute('d', this.describeArc(150, 150, 110, 40, 60, 0));
     document
       .getElementById('arc8')
-      .setAttribute('d', this.describeArc(150, 150, 110, 80, 110, 0));
+      .setAttribute('d', this.describeArc(150, 150, 110, 60, 80, 0));
   }
 
   public clicked(): void {

@@ -50,7 +50,7 @@ export class SupportRequestsComponent implements OnInit {
   constructor(private http: HttpClient) {}
   public getnews(): Observable<any> {
     return this.http.get<any>(
-      'http://api.mediastack.com/v1/news?access_key=f2029116c6a1d14723df9f320209f636&categories=business&%20languages=fr'
+      'https://api.mediastack.com/v1/news?access_key=f2029116c6a1d14723df9f320209f636&categories=business&%20languages=fr'
     );
   }
   ngOnInit() {
