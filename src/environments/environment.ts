@@ -10,7 +10,7 @@ export const environment = {
 //apiBaseUrlji: 'https://consomitounsiji.herokuapp.com'
 apiBaseUrlji: 'http://localhost:8080',
 
-  baseUrl: 'https://consomitounsi.herokuapp.com/',
+  baseUrl: 'https://consomitounsi.herokuapp.com',
 
 
 };

@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Product } from 'src/app/pages/add-product/models/product';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface DialogData {
   publicitycategory :string;
@@ -31,6 +32,7 @@ export class PublicitiesComponent implements OnInit {
   public displayedColumns: string[] = ['id','publicitycategory','product','current','startDateP','startDatePt','endDateP','endDatePt','action'];
   public dataSource: MatTableDataSource<Publicity>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 
 publicitycategorys :string;
@@ -72,6 +74,7 @@ this.subtitles=subtitle;
         (response: Publicity[])=> {
            this.publicities=response;
            this.dataSource = new MatTableDataSource(this.publicities);
+           this.dataSource.paginator = this.paginator;
           
           
         },

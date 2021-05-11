@@ -8,6 +8,7 @@ import { Product } from '../models/product';
 import { ProductsComponent } from '../products/products.component';
 import { ProductService } from '../services';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -19,6 +20,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class AddProductComponentComponent implements OnInit {
   public product : Product = new Product();
   public categories : Category[];
+  public products : Product[];
+  public dataSource: MatTableDataSource<Product>;
   Natures: String[] = ["Alimentaire", "Electromenager", "cosmetique", "hygiene", 
     "nettoyage" , "divertissement" , "textil" ,"decoration" , "electronique" ,
     "cuisine" , "autre"
@@ -62,11 +65,27 @@ export class AddProductComponentComponent implements OnInit {
     }
 
 
+    public getproducts(): void {
+      this.productservice.loadProductTableData().subscribe(
+    
+          (response: Product[])=> {
+            this.products=response;
+            this.dataSource = new MatTableDataSource(this.products);
+
+    
+          },
+          (error: HttpErrorResponse)=> {
+            alert(error.message);
+          }
+        );
+      }
+
+
     message:any;
     onSubmit(selectedid){
       console.log(this.product);
     let resp=this.productservice.addProduct(selectedid,this.product);
-      resp.subscribe((data)=>this.message=data); 
+      resp.subscribe((data)=>{this.message=data;this.getproducts()}); 
 
   
  
@@ -74,24 +93,6 @@ export class AddProductComponentComponent implements OnInit {
     }
 
 
-
-    
-
-    /* changeStatus()
-    {
-      var inputValue = (<HTMLInputElement>document.getElementById("nature")).value;
-      var status = document.getElementById("nature");
-      if (inputValue == "Alimentaire")
-    
-      {
-    
-     document.getElementById("ok").style.visibility="visible"
-      }
-      else 
-      {
-        document.getElementById("ok").style.visibility="hidden"
-      }
-    }*/
     
 
     durationInSeconds = 5;
