@@ -11,6 +11,7 @@ export const environment = {
   apiBaseUrlji: 'http://localhost:8080',
 
   baseUrl: 'https://consomitounsi.herokuapp.com',
+  apiBaseUrl:'http://localhost:8092'
 };
 
 /*

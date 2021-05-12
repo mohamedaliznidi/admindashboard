@@ -80,10 +80,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/auth/auth.module').then((m) => m.AuthModule),
   },
+  
+  
+ 
   {
     path: '**',
     redirectTo: '404',
   },
+ 
 ];
 
 @NgModule({

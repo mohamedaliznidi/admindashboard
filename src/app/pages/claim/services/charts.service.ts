@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Employee } from '../models';
 
 import {
@@ -8,11 +10,14 @@ import {
   LineChartData,
   PieChartData,
 } from '../models';
+import { Claim, Stat } from '../models/claim';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChartsService {
+  private apiserverUrl=environment.apiBaseUrl;
+  constructor(private _http:HttpClient) { }
   public loadLineChartData(): Observable<LineChartData> {
     return of({
       series: [
@@ -36,107 +41,7 @@ export class ChartsService {
       ],
     });
   }
-  public loadEmployeeTableData(): Observable<Employee[]> {
-    return of([
-      {
-        name: 'Joe James',
-        company: 'Example Inc.',
-        city: 'Yonkers',
-        state: 'NY',
-      },
-      {
-        name: 'John Walsh',
-        company: 'Example Inc.',
-        city: 'Hartford',
-        state: 'CT',
-      },
-      { name: 'Bob Herm', company: 'Example Inc.', city: 'Tampa', state: 'FL' },
-      {
-        name: 'James Houston',
-        company: 'Example Inc.',
-        city: 'Dallas',
-        state: 'TX',
-      },
-      {
-        name: 'Prabhakar Linwood',
-        company: 'Example Inc.',
-        city: 'Hartford',
-        state: 'CT',
-      },
-      {
-        name: 'Kaui Ignace',
-        company: 'Example Inc.',
-        city: 'Yonkers',
-        state: 'NY',
-      },
-      {
-        name: 'Esperanza Susanne',
-        company: 'Example Inc.',
-        city: 'Hartford',
-        state: 'CT',
-      },
-      {
-        name: 'Christian Birgitte',
-        company: 'Example Inc.',
-        city: 'Tampa',
-        state: 'FL',
-      },
-      {
-        name: 'Meral Elias',
-        company: 'Example Inc.',
-        city: 'Hartford',
-        state: 'CT',
-      },
-      {
-        name: 'Deep Pau',
-        company: 'Example Inc.',
-        city: 'Yonkers',
-        state: 'NY',
-      },
-      {
-        name: 'Sebastiana Hani',
-        company: 'Example Inc.',
-        city: 'Dallas',
-        state: 'TX',
-      },
-      {
-        name: 'Marciano Oihana',
-        company: 'Example Inc.',
-        city: 'Yonkers',
-        state: 'NY',
-      },
-      {
-        name: 'Brigid Ankur',
-        company: 'Example Inc.',
-        city: 'Dallas',
-        state: 'TX',
-      },
-      {
-        name: 'Anna Siranush',
-        company: 'Example Inc.',
-        city: 'Yonkers',
-        state: 'NY',
-      },
-      {
-        name: 'Avram Sylva',
-        company: 'Example Inc.',
-        city: 'Hartford',
-        state: 'CT',
-      },
-      {
-        name: 'Serafima Babatunde',
-        company: 'Example Inc.',
-        city: 'Tampa',
-        state: 'FL',
-      },
-      {
-        name: 'Gaston Festus',
-        company: 'Example Inc.',
-        city: 'Tampa',
-        state: 'FL',
-      },
-    ]);
-  }
+  
   public dashedLineChartData(): Observable<DashedLineChartData> {
     return of({
       series: [
@@ -164,18 +69,11 @@ export class ChartsService {
   }
   
 
-  public loadPieChartData(): Observable<PieChartData> {
-    return of({
-      series: [
-        Math.round(Math.random() * 100),
-        Math.round(Math.random() * 100),
-        Math.round(Math.random() * 100),
-        Math.round(Math.random() * 100),
-      ],
-      labels: ['Time', 'Quality', 'Service', 'Other'],
-    });
-  }
-
+  public loadPieChartData(): Observable<Stat> {
+    
+    return this._http.get<Stat>("http://localhost:8092/saticclaim")}
+      
+    
   public loadHeatmapChartData(): Observable<HeatmapChartData> {
     return of({
       series: [
@@ -259,4 +157,23 @@ export class ChartsService {
     }
     return series;
   }
+  public getClaim() : Observable<Claim[]> {
+    return this._http.get<Claim[]>(`${this.apiserverUrl}/cat`);
+}
+public addClaim( claim: Claim) : Observable<Claim[]> {
+    return this._http.post<Claim[]>(`${this.apiserverUrl}/add`, claim);
+}/*
+public updateClaim( idclaim: number) : Observable<Claim[]> {
+    return this._http.put<Claim[]>(`${this.apiserverUrl}/updateclaim/${idclaim}`,);
+}*/
+public deleteClaim( idclaim: number) : Observable<void> {
+    return this._http.delete<void>(`${this.apiserverUrl}/deleteclaim/${idclaim}`);
+}
+public getStatique() : Observable<Claim[]> {
+    return this._http.get<Claim[]>(`${this.apiserverUrl}/saticclaim`)
+}
+public getStatiquedelivery() : Observable<Claim> {
+    return this._http.get<Claim>(`${this.apiserverUrl}/list`)
+
+}
 }
