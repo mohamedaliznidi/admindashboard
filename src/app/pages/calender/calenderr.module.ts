@@ -15,7 +15,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
- // timeGridPlugin,
+  // timeGridPlugin,
   listPlugin,
   interactionPlugin,
 ]);

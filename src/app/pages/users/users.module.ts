@@ -27,6 +27,9 @@ import { ClientsPageComponent } from './containers/clients-page/clients-page.com
 import { ManagersTableComponent } from './components/managers-table/managers-table.component';
 import { ClientsTableComponent } from './components/clients-table/clients-table.component';
 import { AllTableComponent } from './components/all-table/all-table.component';
+import { AddAdminComponent } from './components/add-admin/add-admin.component';
+
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { AllTableComponent } from './components/all-table/all-table.component';
     ManagersTableComponent,
     ClientsTableComponent,
     AllTableComponent,
+    AddAdminComponent,
   ],
   imports: [
     HttpClientModule,
@@ -58,6 +62,6 @@ import { AllTableComponent } from './components/all-table/all-table.component';
     MatProgressSpinnerModule,
     MatSortModule,
   ],
-  providers: [UsersService, AdminService],
+  providers: [UsersService, AdminService, FormBuilder, FormGroup],
 })
 export class UsersModule {}
