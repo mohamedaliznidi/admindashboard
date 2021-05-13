@@ -30,6 +30,8 @@ import { AllTableComponent } from './components/all-table/all-table.component';
 import { AddAdminComponent } from './components/add-admin/add-admin.component';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DeliverymanPageComponent } from './containers/deliveryman-page/deliveryman-page.component';
+import { DeliverymanTableComponent } from './components/deliveryman-table/deliveryman-table.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     ClientsTableComponent,
     AllTableComponent,
     AddAdminComponent,
+    DeliverymanPageComponent,
+    DeliverymanTableComponent,
   ],
   imports: [
     HttpClientModule,
@@ -62,6 +66,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     MatProgressSpinnerModule,
     MatSortModule,
   ],
-  providers: [UsersService, AdminService, FormBuilder, FormGroup],
+  providers: [UsersService, AdminService],
 })
 export class UsersModule {}

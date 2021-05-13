@@ -1,29 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { UsersService } from '../../services';
 
 @Component({
   selector: 'app-add-admin',
   templateUrl: './add-admin.component.html',
   styleUrls: ['./add-admin.component.css'],
 })
-export class AddAdminComponent implements OnInit {
+export class AddAdminComponent {
   hide = true;
-  myForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  @Input() type: string;
+  
+  constructor(private service: UsersService) {}
 
-  ngOnInit(): void {
-    this.myForm = this.fb.group({
-      username: '',
-      email: '',
-      password: '',
-      firstname: '',
-      lastname: '',
-      number: 0,
+  public onSubmit(data): void {
+    this.service.addUser(data, this.type).subscribe((res) => {
+      console.log(res);
     });
-    this.myForm.valueChanges.subscribe(console.log)
-  }
-
-  public onSubmit(): void {
-    console.log('sub');
   }
 }
