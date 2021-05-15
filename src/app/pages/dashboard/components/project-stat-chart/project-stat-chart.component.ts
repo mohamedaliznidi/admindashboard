@@ -167,6 +167,9 @@ export class ProjectStatChartComponent implements OnInit {
     'Thursday',
     'Friday',
     'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
   ];
   public n: number = 0;
   constructor(private http: HttpClient) {}
@@ -180,7 +183,6 @@ export class ProjectStatChartComponent implements OnInit {
   public ngOnInit(): void {
     this.loadWeather().subscribe((res) => {
       this.weather = res;
-      console.log(this.weather.forecast.forecastday[0].day.avgtemp_c);
       this.d = new Date();
       this.n = this.d.getDay();
     });

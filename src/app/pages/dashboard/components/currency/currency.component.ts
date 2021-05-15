@@ -1,73 +1,141 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
-  styleUrls: ['./currency.component.css'],
+  styleUrls: ['./currency.component.scss'],
 })
 export class CurrencyComponent implements OnInit {
-  constructor() {}
+  //CURRENCY RATE
+  //TND
+  public TND_USD: number = 10;
+  public TND_EUR: number = 20;
+  public TND_GBP: number = 30;
+  //EUR
+  public EUR_GBP: number = 40;
+  //USD
+  public USD_EUR: number = 50;
+  public USD_GBP: number = 60;
+
+  public from: string = '';
+  public to: string = '';
+  public rateNB: number = 2;
+  public fromNB: number = 0;
+  public toNB: number = this.fromNB * this.rateNB;
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    document
-      .getElementById('arc1')
-      .setAttribute('d', this.describeArc(150, 150, 110, -70, -90, 1));
-    document
-      .getElementById('arc2')
-      .setAttribute('d', this.describeArc(150, 150, 110, -50, -70, 1));
-    document
-      .getElementById('arc3')
-      .setAttribute('d', this.describeArc(150, 150, 110, -20, -50, 1));
-    document
-      .getElementById('arc4')
-      .setAttribute('d', this.describeArc(150, 150, 110, 50, -20, 1));
+    this.loadCurrency1().subscribe((res) => {
+      this.TND_USD = res.TND_USD;
 
-    document
-      .getElementById('arc5')
-      .setAttribute('d', this.describeArc(170, 90, 90, 180, 160, 0));
-    document
-      .getElementById('arc6')
-      .setAttribute('d', this.describeArc(150, 150, 110, 20, 40, 0));
-    document
-      .getElementById('arc7')
-      .setAttribute('d', this.describeArc(150, 150, 110, 40, 60, 0));
-    document
-      .getElementById('arc8')
-      .setAttribute('d', this.describeArc(150, 150, 110, 60, 80, 0));
+      this.TND_EUR = res.TND_EUR;
+    });
+    this.loadCurrency2().subscribe((res) => {
+      this.TND_GBP = res.TND_GBP;
+
+      this.USD_EUR = res.USD_EUR;
+    });
+    this.loadCurrency3().subscribe((res) => {
+      this.USD_GBP = res.USD_GBP;
+
+      this.EUR_GBP = res.EUR_GBP;
+    });
   }
-
-  public clicked(): void {
-    console.log('clicked');
+  public loadCurrency1(): Observable<any> {
+    return this.http.get<any>(
+      'https://free.currconv.com/api/v7/convert?q=TND_USD,TND_EUR&compact=ultra&apiKey=e637f2794949d71d61c6'
+    );
   }
-  public polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-    var angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
-
-    return {
-      x: centerX + radius * Math.cos(angleInRadians),
-      y: centerY + radius * Math.sin(angleInRadians),
-    };
+  public loadCurrency2(): Observable<any> {
+    return this.http.get<any>(
+      'https://free.currconv.com/api/v7/convert?q=TND_GBP,USD_EUR&compact=ultra&apiKey=e637f2794949d71d61c6'
+    );
   }
+  public loadCurrency3(): Observable<any> {
+    return this.http.get<any>(
+      'https://free.currconv.com/api/v7/convert?q=USD_GBP,EUR_GBP&compact=ultra&apiKey=e637f2794949d71d61c6'
+    );
+  }
+  public onSubmit(): void {}
 
-  public describeArc(x, y, radius, startAngle, endAngle, direction) {
-    var start = this.polarToCartesian(x, y, radius, endAngle);
-    var end = this.polarToCartesian(x, y, radius, startAngle);
+  public calFrom(data): void {
+    this.toNB = data * this.rateNB;
+  }
+  public calTo(data): void {
+    this.fromNB = data / this.rateNB;
+  }
+  public changeFrom(data): void {
+    this.from = data;
+    this.calRate(this.from, this.to);
+    this.calTo(this.from);
+  }
+  public changeTo(data): void {
+    this.to = data;
+    this.calRate(this.from, this.to);
+    this.calFrom(this.to);
+  }
+  public calRate(from, to): void {
+    if (to == from) {
+      this.rateNB = 1;
+    }
+    switch (from) {
+      case 'TND':
+        switch (to) {
+          case 'USD':
+            this.rateNB = this.TND_USD;
+            break;
+          case 'EUR':
+            this.rateNB = this.TND_EUR;
+            break;
+          case 'GBP':
+            this.rateNB = this.TND_GBP;
+            break;
+        }
+        break;
+      case 'USD':
+        switch (to) {
+          case 'TND':
+            this.rateNB = 1 / this.TND_USD;
+            break;
 
-    var largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+          case 'EUR':
+            this.rateNB = this.USD_EUR;
+            break;
+          case 'GBP':
+            this.rateNB = this.USD_GBP;
+            break;
+        }
+        break;
+      case 'EUR':
+        switch (to) {
+          case 'TND':
+            this.rateNB = 1 / this.TND_EUR;
+            break;
+          case 'USD':
+            this.rateNB = 1 / this.USD_EUR;
+            break;
 
-    var d = [
-      'M',
-      start.x,
-      start.y,
-      'A',
-      radius,
-      radius,
-      0,
-      largeArcFlag,
-      direction,
-      end.x,
-      end.y,
-    ].join(' ');
-
-    return d;
+          case 'GBP':
+            this.rateNB = this.EUR_GBP;
+            break;
+        }
+        break;
+      case 'GBP':
+        switch (to) {
+          case 'TND':
+            this.rateNB = 1 / this.TND_GBP;
+            break;
+          case 'USD':
+            this.rateNB = 1 / this.USD_GBP;
+            break;
+          case 'EUR':
+            this.rateNB = 1 / this.EUR_GBP;
+            break;
+        }
+        break;
+    }
   }
 }
