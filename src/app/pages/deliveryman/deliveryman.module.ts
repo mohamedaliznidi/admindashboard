@@ -8,6 +8,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DeliverymanRoutingModule } from './deliveryman-routing.module';
 
+import { AgmCoreModule } from '@agm/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     DeliverymanPageComponent,
@@ -20,6 +24,11 @@ import { DeliverymanRoutingModule } from './deliveryman-routing.module';
     SharedModule,
     DeliverymanRoutingModule,
     MatToolbarModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBvuBuFSYHCi9sqTrHRZftW_ujRq4Wdcb8'
+    }),
+    ChartsModule,
   ],
+  
 })
 export class DeliverymanModule {}

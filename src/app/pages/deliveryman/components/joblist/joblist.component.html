@@ -1,1 +1,68 @@
-<p>joblist works!</p>
+<h1>This Is Your Joblist</h1>
+<div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let delivery of deliverys" class="col-md-6 col-xl-3">
+         <div class="card m-b-30">
+            <div class="card-body row">
+              
+               <div class="col-6 card-title align-self-center mb-0">
+                  <h5>ID_DELIVERY: {{delivery?.id_deliv}}</h5>
+                 
+               </div>
+            </div>
+            <ul class="list-group list-group-flush">
+               <li class="list-group-item"><i ></i>laltitude :{{delivery?.laltitude}}</li>
+               <li class="list-group-item"><i></i>longitude : {{delivery?.longitude}}</li>
+               <li class ="list-group-item" *ngIf="delivery.isdo"><i>Done   </i></li>
+               <li class ="list-group-item"*ngIf="!delivery.isdo"><i>Not Done  </i></li>
+            </ul>
+            <div class="card-body">
+              <div class="float-right btn-group btn-group-sm">
+               
+                <button (click)=" getfrais(delivery.id_deliv)" type="button" class="btn btn-
+                primary">FRAIS</button>
+                  
+                <button (click)="todo(delivery)" type="button" class="btn btn-
+                success">Do</button>
+                
+              </div>
+    
+              <div class="card-body">
+                  <div class="float-right btn-group btn-group-sm">
+                     
+                  
+                   <div *ngfor="let delivery of deliverys">
+                   <button (click)=" getaoto(delivery.id_deliv)" type="button" class="btn btn-
+                   primary">GET AUTOMOBILE</button>
+                   <p>
+                       {{atoumobile}} 
+                   </p>
+                  
+                  </div>
+                  
+    </div>
+                  
+    
+            </div>
+         
+          </div>
+    
+      
+         
+      </div>
+     
+     </div>
+     <div class="row justify-content-md-center">
+       
+     </div>
+     <p>
+       {{frais}} Dinar
+    </p>
+     </div>
+     
+    </div>
+    
+    
+    
+    
+    
