@@ -15,6 +15,7 @@ export enum routes {
   ADMIN = '/users/admin',
   CLIENT = '/users/client',
   MANAGER = '/users/manager',
+  DELIVERYMAN = '/users/deliveryman',
   ALL = '/users/all',
   CLAIM = '/claim',
   CALENDER = '/calender',

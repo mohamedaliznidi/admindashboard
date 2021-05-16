@@ -12,7 +12,10 @@ export class UsersService {
   constructor(private http: HttpClient) {} //private http: HttpClient
 
   public getUsers(): Observable<Users[]> {
-    return this.http.get<Users[]>(`${this.apiServerUrl}admins/users`);
+    return this.http.get<Users[]>(`${this.apiServerUrl}/api/admins/users`);
+  }
+  public addUser(data, type): Observable<any> {
+    return this.http.post<any>(`${this.apiServerUrl}/api/${type}s`, data);
   }
 
   public loadManagers(): Observable<Users[]> {

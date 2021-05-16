@@ -34,18 +34,18 @@
           >
             <div class="example-element-diagram">
               <!-- <div class="example-element-position">{{ element.category }}</div> -->
-              <img src="{{ element.image }}" alt="" />
+              <img src="{{ element.urlToImage }}" alt="" />
             </div>
             <div class="example-element-description">
               {{ element.description }}
               <span class="example-element-description-attribution">
-                -- {{ element.source }}
+                -- {{ element.source.name }}
               </span>
             </div>
             <div class="example-element-description">
               published at
               <span class="example-element-description-attribution">
-                -- {{ element.published_at }}
+                -- {{ element.publishedAt }}
               </span>
             </div>
             <div class="example-button-container">

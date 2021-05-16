@@ -6,12 +6,17 @@ import {
   AllComponent,
   ClientsPageComponent,
   ManagersPageComponent,
+  DeliverymanPageComponent,
 } from './containers';
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdminPageComponent,
+  },
+  {
+    path: 'deliveryman',
+    component: DeliverymanPageComponent,
   },
   {
     path: 'all',

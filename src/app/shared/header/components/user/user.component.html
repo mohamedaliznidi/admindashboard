@@ -2,25 +2,36 @@
   <mat-icon class="user-button__icon">person</mat-icon>
 </button>
 <mat-menu #userMenu="matMenu" xPosition="before" class="user-menu">
-  <div class="user-menu-title">
-    <h3 class="user-menu-title__name">
-      <mat-icon class="user-menu-icon">person</mat-icon>{{ user.username }}
-    </h3>
-    <h4 class="user-menu-title__name">
-      {{ user.firstname }} {{ user.lastname }}
-    </h4>
+  <div id="card">
+    <div id="avatar">
+     
+    </div>
 
-    <a class="user-menu-title__link" [href]="flatlogicEmail">{{
-      user.email
-    }}</a>
-  </div>
-
-  <div class="sign-button-wrapper">
-    <button class="sign-button" mat-flat-button (click)="signOutEmit()">
-      <mat-icon>logout</mat-icon>
-    </button>
-    <button class="sign-button" mat-flat-button>
-      <mat-icon>manage_accounts</mat-icon>
-    </button>
+    <div id="profile">
+      <h1>John Doe</h1>
+      <h3>Web Developer</h3>
+    </div>
   </div>
 </mat-menu>
+
+<!-- <div class="user-menu-title">
+  <h3 class="user-menu-title__name">
+    <mat-icon class="user-menu-icon">person</mat-icon>{{ user.username }}
+  </h3>
+  <h4 class="user-menu-title__name">
+    {{ user.firstname }} {{ user.lastname }}
+  </h4>
+
+  <a class="user-menu-title__link" [href]="flatlogicEmail">{{
+    user.email
+  }}</a>
+</div>
+
+<div class="sign-button-wrapper">
+  <button class="sign-button" mat-flat-button (click)="signOutEmit()">
+    <mat-icon>logout</mat-icon>
+  </button>
+  <button class="sign-button" mat-flat-button>
+    <mat-icon>manage_accounts</mat-icon>
+  </button>
+</div> -->
