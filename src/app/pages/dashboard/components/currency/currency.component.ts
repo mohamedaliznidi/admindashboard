@@ -28,21 +28,18 @@ export class CurrencyComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.loadCurrency1().subscribe((res) => {
-      this.TND_USD = res.TND_USD;
-
-      this.TND_EUR = res.TND_EUR;
-    });
-    this.loadCurrency2().subscribe((res) => {
-      this.TND_GBP = res.TND_GBP;
-
-      this.USD_EUR = res.USD_EUR;
-    });
-    this.loadCurrency3().subscribe((res) => {
-      this.USD_GBP = res.USD_GBP;
-
-      this.EUR_GBP = res.EUR_GBP;
-    });
+    // this.loadCurrency1().subscribe((res) => {
+    //   this.TND_USD = res.TND_USD;
+    //   this.TND_EUR = res.TND_EUR;
+    // });
+    // this.loadCurrency2().subscribe((res) => {
+    //   this.TND_GBP = res.TND_GBP;
+    //   this.USD_EUR = res.USD_EUR;
+    // });
+    // this.loadCurrency3().subscribe((res) => {
+    //   this.USD_GBP = res.USD_GBP;
+    //   this.EUR_GBP = res.EUR_GBP;
+    // });
   }
   public loadCurrency1(): Observable<any> {
     return this.http.get<any>(

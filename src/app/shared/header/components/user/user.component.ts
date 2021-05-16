@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Users } from 'src/app/pages/users/models';
-
 import { routes } from '../../../../consts';
 
 @Component({

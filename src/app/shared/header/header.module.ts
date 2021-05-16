@@ -21,11 +21,9 @@ import { ShortNamePipe } from './pipes';
     EmailComponent,
     NotificationsComponent,
     SearchComponent,
-    ShortNamePipe
+    ShortNamePipe,
   ],
-  exports: [
-    HeaderComponent
-  ],
+  exports: [HeaderComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -34,7 +32,7 @@ import { ShortNamePipe } from './pipes';
     MatMenuModule,
     MatButtonModule,
     MatInputModule,
-    MatBadgeModule
-  ]
+    MatBadgeModule,
+  ],
 })
-export class HeaderModule { }
+export class HeaderModule {}
