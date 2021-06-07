@@ -1,9 +1,9 @@
 export interface Delivery{
     id_deliv:number ; 
     
-         weight:Float32Array; 
+         weight:number; 
     
-     Lenght:Float32Array ; 
+     Lenght:number ; 
     
     Width:Float32Array; 
     

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { Deliveryman } from 'src/app/pages/claim/models/deliveryman';
+import { DeliveryService } from '../../service';
 
 @Component({
   selector: 'app-cliam-numb',
@@ -16,13 +18,13 @@ export class CliamNumbComponent implements OnInit {
 
   barChartLabels: Label[];
   barChartLabels2: Label[];
-  constructor( private https:HttpClient){
-    /*this.username=[];
+  constructor( private https:HttpClient ,private _service: DeliveryService){
+    this.username=[];
     this.barChartData=[
       { data: [], label: '' }
     ]
     this.workload=[];
- this.listDeliveryMan=[];*/
+ this.listDeliveryMan=[];
  this.barChartLabels=[];
  this.claims=[];
  this.id=[];
@@ -41,18 +43,18 @@ this.barChartLabels2=[];
      ngOnInit(): void {
        this.getstat();
        
-       /*this.barChartLabels= this.username;
-       // ["Pending", "InProgress", "OnHold", "Complete", "Cancelled"];
+       this.barChartLabels= this.username;
+       ["Pending", "InProgress", "OnHold", "Complete", "Cancelled"];
        this.barChartData=[
          { data: this.workload, label: 'workload' }
-       ]*/
+       ]
        this.barChartLabels2= this.id;
-       // ["Pending", "InProgress", "OnHold", "Complete", "Cancelled"];
+       ["Pending", "InProgress", "OnHold", "Complete", "Cancelled"];
        this.barChartData2=[
          { data: this.claims, label: 'nbclaims' }
        ]
    
-       //this.getlistofdeliveryman();
+       this.getlistofdeliveryman();
      }
    
      barChartType: ChartType = 'bar';
@@ -67,23 +69,23 @@ this.barChartLabels2=[];
      barChartOptions: ChartOptions = {
        responsive: true,
      };
-     /*listDeliveryMan: Deliveryman[];
+     listDeliveryMan: Deliveryman[];
      username: string[];
      workload: number[];
-     title = 'bar-chart';*/
+     title = 'bar-chart';
      
     public barChartColors: Color[] = [
-     { backgroundColor: 'dark bleu' },
+     { backgroundColor: '#f16c69' },
    ]
    
      barChartData: ChartDataSets[] ;
-     /*[
+    /* [
        { data: [45, 37, 60, 70, 46], label: 'Task Status' }
      ];*/
    
    
      barChartData2: ChartDataSets[] ;
-     /*public getlistofdeliveryman(){
+     public getlistofdeliveryman(){
        let resp= this._service.getDeliveryman() ;
        resp.subscribe((res)=>{this.listDeliveryMan=res
        this.listDeliveryMan.forEach(el=>{
@@ -98,7 +100,7 @@ this.barChartLabels2=[];
        
        
        });
-      }*/
+      }
  
       getstat(){
  

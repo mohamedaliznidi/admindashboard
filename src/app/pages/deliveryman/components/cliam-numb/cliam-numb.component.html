@@ -301,7 +301,16 @@
     <div class="container">
       <div class="col-sm-4 text-center" style="width:500px;height:600px;">
      
-      
+        <h2 class="text-center">statistic of workload of delivery man</h2>
+      <canvas baseChart 
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [colors]="barChartColors"
+      [chartType]="barChartType">
+    </canvas>
     
     <h2  class="text-center">statistic of claims of delivery man</h2>
     <canvas baseChart 
