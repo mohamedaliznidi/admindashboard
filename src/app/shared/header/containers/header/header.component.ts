@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -8,6 +15,7 @@ import { routes } from '../../../../consts';
 import { Users } from 'src/app/pages/users/models';
 import { DToken } from 'src/app/pages/auth/models/d-token';
 import jwt_decode from 'jwt-decode';
+import { UserComponent } from '../../components';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -34,6 +42,18 @@ export class HeaderComponent implements OnInit {
   public token: string;
   public decoded: DToken;
 
+   public name: string;
+ 
+ public getName(): void {
+    this.name = this.user.firstname[0]
+    .toUpperCase()
+    .concat(this.user.firstname.slice(1, this.user.firstname.length),' ', this.user.lastname.toUpperCase());
+    console.log(this.name);
+
+ }
+  
+  
+
   constructor(
     private userService: AuthService,
     private emailService: EmailService,
@@ -54,6 +74,7 @@ export class HeaderComponent implements OnInit {
       .getUser(this.decoded.sub, this.decoded.authorities[0])
       .subscribe((res) => {
         this.user = res;
+        this.getName()
       });
   }
 
