@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuTrigger } from '@angular/material/menu/menu-trigger'
 
 import { HeaderComponent } from './containers';
 import { UserComponent, EmailComponent } from './components';

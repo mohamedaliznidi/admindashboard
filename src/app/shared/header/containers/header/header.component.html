@@ -15,6 +15,6 @@
     <app-search></app-search>
     <app-notifications></app-notifications>
     <app-email [user]="user"></app-email>
-    <app-user [user]="user" (signOut)="signOut()"></app-user>
+    <app-user [user]="user" [name]="name" (signOut)="signOut()"></app-user>
   </div>
 </mat-toolbar>
