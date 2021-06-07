@@ -28,6 +28,13 @@ export class UsersService {
     return this.http.get<Users[]>(`${this.apiServerUrl}/api/admins/users`);
   }
 
+  public deleteClient(id): Observable<any> {
+    return this.http.delete<any>(`${this.apiServerUrl}/api/clients?id=${id}`);
+  }
+  public deleteManager(id): Observable<any> {
+    return this.http.delete<any>(`${this.apiServerUrl}/api/managers?id=${id}`);
+  }
+
   public loadUserTableData(): Observable<Users[]> {
     return of([
       {

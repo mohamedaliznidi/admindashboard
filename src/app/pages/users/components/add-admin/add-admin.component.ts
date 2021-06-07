@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UsersService } from '../../services';
 
 @Component({
@@ -9,7 +9,8 @@ import { UsersService } from '../../services';
 export class AddAdminComponent {
   hide = true;
   @Input() type: string;
-  
+
+  public succ: boolean;
   constructor(private service: UsersService) {}
 
   public onSubmit(data): void {

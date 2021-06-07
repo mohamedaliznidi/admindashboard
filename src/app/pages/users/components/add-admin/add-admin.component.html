@@ -69,17 +69,28 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Phone</mat-label>
-          <input matInput placeholder="Phone" required name="number" type="number" ngModel />
+          <input
+            matInput
+            placeholder="Phone"
+            required
+            name="number"
+            type="number"
+            ngModel
+          />
         </mat-form-field>
       </div>
-      <button
-        style="margin: 5px"
-        mat-raised-button
-        type="submit"
-        class="add-btn"
-      >
-        Add
-      </button>
+      <div class="btnAndLog">
+        <button
+          style="margin: 5px"
+          mat-raised-button
+          type="submit"
+          class="add-btn"
+        >
+          Add
+        </button>
+        <h4 class="green" *ngIf="succ">Registered Successfully</h4>
+        <h4 class="red" *ngIf="succ == false">Error in the form</h4>
+      </div>
     </div>
   </form>
 </mat-card>

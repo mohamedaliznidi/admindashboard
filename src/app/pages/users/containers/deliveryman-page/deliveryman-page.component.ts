@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deliveryman-page.component.css'],
 })
 export class DeliverymanPageComponent implements OnInit {
-  type: string = 'deliveryman';
+  type: string = 'client';
   constructor() {}
 
   ngOnInit(): void {}
