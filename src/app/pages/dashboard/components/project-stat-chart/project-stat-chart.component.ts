@@ -176,7 +176,7 @@ export class ProjectStatChartComponent implements OnInit {
 
   public loadWeather(): Observable<Weather> {
     return this.http.get<Weather>(
-      'https://api.weatherapi.com/v1/forecast.json?key=d60190bd9fb5489c89284443212602&q=London&days=7&aqi=no&alerts=no'
+      'https://api.weatherapi.com/v1/forecast.json?key=d60190bd9fb5489c89284443212602&q=36.81897 10.16579&days=7&aqi=no&alerts=no'
     );
   }
 
