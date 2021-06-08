@@ -1,5 +1,6 @@
 <br><br><br>
-<form #productput="ngForm" name="updateproductform">
+<div class="form">
+<form #productput="ngForm" name="updateproductform" class="formconfig">
     <div class = "tables-wrapper">
     <mat-form-field appearance="outline" floatLabel="always" >
         <mat-label>Name</mat-label>
@@ -79,11 +80,10 @@
     <div *ngIf="selectedValue === 'Alimentaire'" class="NN">
     
     <div class="NP">
-      <h1>Nutrition Properties</h1>
+      <h4>Nutrition Properties</h4>
     </div>
       <br>
-      <br>
-      <br>
+
       <div>
       <mat-form-field appearance="outline" floatLabel="always" >
         <mat-label>Energy</mat-label>
@@ -134,9 +134,11 @@
       </div>
       </div>
       <div class = "tables-wrapper">
+        <div class="buttons">
       <button style="margin:5px;" mat-raised-button type="submit" routerLink="{{routes.PRODUCTS}}" routerLinkActive="active" (click)="save(product);openSnackBar()">Update</button>
       <button style="margin:5px;" mat-raised-button type="button" onclick="this.form.reset();">Reset</button>
+      </div>
     </div>
     </form>
-      
+  </div> 
     

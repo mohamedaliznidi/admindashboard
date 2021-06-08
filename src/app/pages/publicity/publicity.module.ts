@@ -29,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProductService } from '../add-product/services';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ SearchforproductComponent
    
   ],
   providers: [
-    PublicityService,ProductService
+    PublicityService,ProductService,MatSnackBar
   ]
 })
 export class PublicityModule { }

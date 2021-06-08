@@ -13,6 +13,7 @@ import * as moment from 'moment';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { routes } from 'src/app/consts';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 export interface DialogData {
@@ -36,6 +37,8 @@ export class ProductsComponent implements OnInit {@Input() employeeTableData: Pr
 
   public displayedColumns: string[] = ['id','name','categoryname','quantity','price','expDate','promotion','initial_price','code','nature','matiere','action'];
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   public products : Product[];
   public dataSource: MatTableDataSource<Product>;
   public newdate:string;
@@ -83,6 +86,8 @@ public getproducts(): void {
       (response: Product[])=> {
         this.products=response;
         this.dataSource = new MatTableDataSource(this.products);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
 
       },
       (error: HttpErrorResponse)=> {
@@ -160,7 +165,7 @@ export class DialogFromMenuExampleDialog {
           duration: this.durationInSeconds * 1000,
         });
       }
-    
+    //this.dataSource.paginator=this.paginator
     }
 
 
