@@ -133,8 +133,8 @@ public getcategories(): void {
         save(product): void {
         
           this.productservice.updateProduct(product)
-            .subscribe();
-            this.getproducts();
+            .subscribe(resp=> this.getproducts());
+          
             
         }
 

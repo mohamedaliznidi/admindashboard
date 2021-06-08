@@ -7,11 +7,12 @@ export const environment = {
   hmr: false,
 
   //https://consomitounsiji.herokuapp.com/
-  apiBaseUrlji: 'https://consomitounsiji.herokuapp.com',
-  // apiBaseUrlji: 'http://localhost:8080',
+  //apiBaseUrlji: 'https://consomitounsiji.herokuapp.com'
+  apiBaseUrlji: 'http://localhost:8080',
 
   baseUrl: 'https://consomitounsi.herokuapp.com',
-  apiBaseUrl:'http://localhost:8092'
+
+  apiBaseUrl: 'http://localhost:8092',
 };
 
 /*

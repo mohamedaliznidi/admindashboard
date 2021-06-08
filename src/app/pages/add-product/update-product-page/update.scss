@@ -2,15 +2,30 @@
   display: flex;
 
   position: relative;
-  left: 70px;
-  padding: 0 8px;
+  /* left: 70px;
+  padding: 0 8px;*/
 }
 
 .NN {
   position: absolute;
-  top: 56px;
+  top: 220px;
   left: 550px;
 }
 .NP {
   color: #b9b9b9;
+}
+.form {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 80vw;
+  margin: 20px;
+}
+.formconfig {
+  padding: 50px;
+}
+
+.buttons {
+  position: absolute;
+  bottom: -60%;
+  right: 8%;
 }
