@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { AgmCoreModule } from '@agm/core';
 import { ChartsService } from './services';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ChartsService } from './services';
     MatFormFieldModule,
     NgApexchartsModule,
     AgmCoreModule,
+    ChartsModule,
   ],
   providers: [ChartsService],
 })

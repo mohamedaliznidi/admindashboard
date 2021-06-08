@@ -46,6 +46,22 @@ import { SidebarManagerComponent } from './sidebar-manager/sidebar-manager.compo
     FooterComponent,
     SettingsMenuComponent,
     DateMenuComponent,
+    LayoutComponent,
+    HeaderModule,
+    MatListModule,
+    MatIconModule,
+    RouterModule,
+    MatButtonModule,
+    CommonModule,
+    MatMenuModule,
+    MatSelectModule,
+    FormsModule,
+    MatSidenavModule,
+    SidebarManagerComponent,
+    SidebarComponent,
+    FooterComponent,
+    SettingsMenuComponent,
+    DateMenuComponent,
     LayoutComponent
   ]
 })

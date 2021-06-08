@@ -36,6 +36,7 @@
     color: $header-title-font-color;
     margin-left: 32px;
     font-weight: $fw-lighter;
+    font-size: 30px;
 
     @media (max-width: $small) {
       display: none;

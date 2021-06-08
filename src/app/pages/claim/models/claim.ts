@@ -1,6 +1,12 @@
 export interface Claim {
     idclaim : number;
-    description : string;
+    descreption : string;
 	subject_claim : string;
 	state : boolean;
 }
+export interface Stat {
+    Product: number;
+    Time: number;
+    Deliveryman: number;
+    Other: number;
+  }

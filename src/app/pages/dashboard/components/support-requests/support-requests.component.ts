@@ -11,16 +11,19 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 export interface news {
-  author: string;
+  source: Source;
+  author?: any;
   title: string;
   description: string;
   url: string;
-  source: string;
-  image: string;
-  category: string;
-  language: string;
-  country: string;
-  published_at: string;
+  urlToImage: string;
+  publishedAt: string;
+  content: string;
+}
+
+interface Source {
+  id?: any;
+  name: string;
 }
 @Component({
   selector: 'app-support-requests',
@@ -43,20 +46,20 @@ export class SupportRequestsComponent implements OnInit {
   public columnsToDisplay: string[] = [
     'author',
     'title',
-    'country',
-    'category',
+    
   ];
   expandedElement: String[] | null;
   constructor(private http: HttpClient) {}
   public getnews(): Observable<any> {
     return this.http.get<any>(
-      'http://api.mediastack.com/v1/news?access_key=f2029116c6a1d14723df9f320209f636&categories=business&%20languages=fr'
+      'https://newsapi.org/v2/top-headlines?country=fr&category=business&apiKey=5089f4b808ba44cd8c16e146a4b157e9'
     );
   }
   ngOnInit() {
     this.getnews().subscribe((res) => {
-      this.dataSource = new MatTableDataSource(res.data);
+      this.dataSource = new MatTableDataSource(res.articles);
       this.dataSource.paginator = this.paginator;
+      console.log(res)
     });
   }
 }

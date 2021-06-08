@@ -12,7 +12,10 @@ export class UsersService {
   constructor(private http: HttpClient) {} //private http: HttpClient
 
   public getUsers(): Observable<Users[]> {
-    return this.http.get<Users[]>(`${this.apiServerUrl}admins/users`);
+    return this.http.get<Users[]>(`${this.apiServerUrl}/api/admins/users`);
+  }
+  public addUser(data, type): Observable<any> {
+    return this.http.post<any>(`${this.apiServerUrl}/api/${type}s`, data);
   }
 
   public loadManagers(): Observable<Users[]> {
@@ -23,6 +26,13 @@ export class UsersService {
   }
   public loadAll(): Observable<Users[]> {
     return this.http.get<Users[]>(`${this.apiServerUrl}/api/admins/users`);
+  }
+
+  public deleteClient(id): Observable<any> {
+    return this.http.delete<any>(`${this.apiServerUrl}/api/clients?id=${id}`);
+  }
+  public deleteManager(id): Observable<any> {
+    return this.http.delete<any>(`${this.apiServerUrl}/api/managers?id=${id}`);
   }
 
   public loadUserTableData(): Observable<Users[]> {

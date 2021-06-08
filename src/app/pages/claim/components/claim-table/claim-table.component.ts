@@ -2,40 +2,47 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
+import { ChartsService } from '../../services';
+import { Claim } from '../../models/claim';
 
-export interface Employee {
-  name: string;
-  company: string;
-  city: string;
-  state: string;
-}
+
 @Component({
   selector: 'app-claim-table',
   templateUrl: './claim-table.component.html',
   styleUrls: ['./claim-table.component.scss'],
 })
 export class ClaimTableComponent implements OnInit {
-  @Input() employeeTableData: Employee[];
+  constructor(private service :ChartsService){
+    this.loadclaims();
+  }
+  
+ 
   public displayedColumns: string[] = [
-    'select',
-    'name',
-    'company',
-    'city',
+    'select', 'idclaim',
+    'descreption',
+    'subject_claim',
     'state',
+    
   ];
-  public dataSource: MatTableDataSource<Employee>;
-  public selection = new SelectionModel<Employee>(true, []);
+  public dataSource: MatTableDataSource<Claim>;
+  public selection = new SelectionModel<Claim>(true, []);
 
   public isShowFilterInput = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  public ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Employee>(this.employeeTableData);
+   ngOnInit(): void {
+    
+    
 
-    this.dataSource.paginator = this.paginator;
+
+    
   }
 
+  public loadclaims():void{
+    this.service.getClaim().subscribe(res => { this.dataSource = new MatTableDataSource(res);
+      this.dataSource.paginator = this.paginator;})
+  }
   /** Whether the number of selected elements matches the total number of rows. */
   public isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
@@ -67,6 +74,6 @@ export class ClaimTableComponent implements OnInit {
 
   public showFilterInput(): void {
     this.isShowFilterInput = !this.isShowFilterInput;
-    this.dataSource = new MatTableDataSource<Employee>(this.employeeTableData);
+ 
   }
 }

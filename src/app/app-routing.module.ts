@@ -7,7 +7,6 @@ import { CategoryPageComponent } from './pages/Product-categories/category-page/
 
 import { AdminGuard, AuthGuard, ManagerGuard } from './pages/auth/guards';
 
-
 const routes: Routes = [
   {
     path: 'dashboard',
@@ -25,29 +24,41 @@ const routes: Routes = [
         (m) => m.NotificationModule
       ),
   },
+  {
+    path: 'deliveryman',
+    pathMatch: 'full',
 
+    loadChildren: () =>
+      import('./pages/deliveryman/deliveryman.module').then(
+        (m) => m.DeliverymanModule
+      ),
+  },
 
   {
     path: 'category',
     pathMatch: 'full',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/Product-categories/category.module').then(m => m.CategoryModule)
+    loadChildren: () =>
+      import('./pages/Product-categories/category.module').then(
+        (m) => m.CategoryModule
+      ),
   },
-
 
   {
     path: 'product',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/add-product/product.module').then(m => m.ProductModule)
+    loadChildren: () =>
+      import('./pages/add-product/product.module').then((m) => m.ProductModule),
   },
 
- {
+  {
     path: 'publicity',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/publicity/publicity.module').then(m => m.PublicityModule)
+    loadChildren: () =>
+      import('./pages/publicity/publicity.module').then(
+        (m) => m.PublicityModule
+      ),
   },
-
-
 
   {
     path: 'calender',
@@ -80,10 +91,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/auth/auth.module').then((m) => m.AuthModule),
   },
+  
+  
+ 
   {
     path: '**',
     redirectTo: '404',
   },
+ 
 ];
 
 @NgModule({

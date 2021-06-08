@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { OnInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,8 +12,8 @@ import { SelectionModel } from '@angular/cdk/collections';
   templateUrl: './clients-table.component.html',
   styleUrls: ['./clients-table.component.scss'],
 })
-export class ClientsTableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'email', 'username', 'role'];
+export class ClientsTableComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'email', 'username', 'role', 'actions'];
 
   dataSource: MatTableDataSource<Users>;
   public selection = new SelectionModel<Users>(true, []);
@@ -22,16 +22,16 @@ export class ClientsTableComponent implements AfterViewInit {
   public admins: Users[];
   public isShowFilterInput = false;
 
-  constructor(private service: UsersService) {
+  constructor(private service: UsersService) {}
+  ngOnInit() {
+    this.loadData();
+  }
+  public loadData(): void {
     this.service.loadClients().subscribe((res) => {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-  }
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -76,5 +76,11 @@ export class ClientsTableComponent implements AfterViewInit {
       event.previousIndex,
       event.currentIndex
     );
+  }
+  public deleteb(id): void {
+    console.log('clicked', id);
+    this.service.deleteClient(id).subscribe((res) => {
+      this.loadData();
+    });
   }
 }

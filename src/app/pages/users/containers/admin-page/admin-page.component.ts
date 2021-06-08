@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-admin-page',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent implements OnInit {
+  type: string = 'admin';
+
   constructor() {}
   ngOnInit() {}
 }

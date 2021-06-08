@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -87,7 +81,7 @@ export class UserTableComponent implements OnInit {
   public deleteb(id): void {
     console.log('clicked', id);
     this.service.deleteAdmin(id).subscribe((res) => {
-     this.loadData()
+      this.loadData();
     });
   }
 }

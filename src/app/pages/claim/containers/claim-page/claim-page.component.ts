@@ -12,11 +12,11 @@ import { ChartsService } from '../../services';
 export class ClaimPageComponent {
   public dashedLineChartData$: Observable<DashedLineChartData>;
   public pieChartData$: Observable<PieChartData>;
-  public employeeTableData$: Observable<Employee[]>;
+ 
 
   constructor(private service: ChartsService) {
-    this.employeeTableData$ = this.service.loadEmployeeTableData();
+
     this.dashedLineChartData$ = this.service.dashedLineChartData();
-    this.pieChartData$ = this.service.loadPieChartData();
+    
   }
 }

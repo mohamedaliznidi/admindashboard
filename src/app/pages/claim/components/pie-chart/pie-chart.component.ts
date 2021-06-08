@@ -14,6 +14,7 @@ import {
   ApexXAxis,
 } from 'ng-apexcharts';
 import { colors } from '../../../../consts';
+import { ChartsService } from '../../services';
 interface PieChartData {
   series: number[];
   labels: string[];
@@ -40,12 +41,21 @@ type ChartOptions = {
   styleUrls: ['./pie-chart.component.css'],
 })
 export class PieChartComponent implements OnInit {
-  @Input() pieChartData: PieChartData;
+  public pieChartData: PieChartData= { series: [0,0,0,0],
+    labels: ["","","",""]}
+ constructor(private service :ChartsService) {
+  
+}
   public apexPieChartOptions: Partial<ChartOptions>;
   public colors: typeof colors = colors;
 
   public ngOnInit(): void {
-    this.initChart();
+    this.service.loadPieChartData().subscribe(res => {
+      this.pieChartData.series=[res.Product,res.Time,res.Deliveryman,res.Other];
+      this.pieChartData.labels=["Product","Time","Deliveryman","Other"]
+      this.initChart();
+    })
+    
   }
 
   public initChart(): void {

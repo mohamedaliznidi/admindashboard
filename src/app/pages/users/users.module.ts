@@ -9,7 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AdminPageComponent } from './containers';
 import { UsersRoutingModule } from './users-routing.module';
@@ -27,10 +27,26 @@ import { ClientsPageComponent } from './containers/clients-page/clients-page.com
 import { ManagersTableComponent } from './components/managers-table/managers-table.component';
 import { ClientsTableComponent } from './components/clients-table/clients-table.component';
 import { AllTableComponent } from './components/all-table/all-table.component';
-import { HeyyyComponent } from './components/heyyy/heyyy.component';
+import { AddAdminComponent } from './components/add-admin/add-admin.component';
+
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { DeliverymanPageComponent } from './containers/deliveryman-page/deliveryman-page.component';
+import { DeliverymanTableComponent } from './components/deliveryman-table/deliveryman-table.component';
 
 @NgModule({
-  declarations: [AdminPageComponent, UserTableComponent, AllComponent, ManagersPageComponent, ClientsPageComponent, ManagersTableComponent, ClientsTableComponent, AllTableComponent, HeyyyComponent],
+  declarations: [
+    AdminPageComponent,
+    UserTableComponent,
+    AllComponent,
+    ManagersPageComponent,
+    ClientsPageComponent,
+    ManagersTableComponent,
+    ClientsTableComponent,
+    AllTableComponent,
+    AddAdminComponent,
+    DeliverymanPageComponent,
+    DeliverymanTableComponent,
+  ],
   imports: [
     HttpClientModule,
     CommonModule,
@@ -48,7 +64,7 @@ import { HeyyyComponent } from './components/heyyy/heyyy.component';
     MatInputModule,
     FormsModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [UsersService, AdminService],
 })

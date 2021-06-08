@@ -1,0 +1,53 @@
+<h4>From {{ from }} To {{ to }}</h4>
+<div class="currency">
+  <div class="from">
+    <div class="input">
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          name="fromNB"
+          [(ngModel)]="fromNB"
+          (keydown.enter)="calFrom(this.fromNB)"
+        />
+      </mat-form-field>
+    </div>
+    <div class="money">
+      <button (click)="changeFrom('TND')">TND</button>
+      <button (click)="changeFrom('USD')">USD</button>
+      <button (click)="changeFrom('EUR')">EUR</button>
+      <button (click)="changeFrom('GBP')">GBP</button>
+    </div>
+  </div>
+
+  <div class="to">
+    <div class="money">
+      <button (click)="changeTo('TND')">TND</button>
+      <button (click)="changeTo('USD')">USD</button>
+      <button (click)="changeTo('EUR')">EUR</button>
+      <button (click)="changeTo('GBP')">GBP</button>
+    </div>
+
+    <div class="input">
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          name="toNB"
+          [(ngModel)]="toNB"
+          (keydown.enter)="calTo(this.toNB)"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<!-- <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" class="example-right-align">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field> -->
